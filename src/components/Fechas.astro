@@ -1,0 +1,33 @@
+---
+import { estado, fecha, planes, pesos } from '../lib/precios';
+const { i } = Astro.props;
+const f = i.fechas;
+const grupos = [...new Set(f.comisiones.map((x) => x.grupo))];
+const curso = (id: string) => i.catalogo.cursos.find((c) => c.id === id);
+---
+<section class="seccion fechas" id="fechas">
+  <div class="caja">
+    <h2>{f.titulo}</h2>
+    <p class="sub">{f.bajada}</p>
+    <div class="chips" role="tablist" aria-label={f.grupoRotulo}>
+      <button class="chip-f activo" data-filtro="todos">Todos</button>
+      {grupos.map((g) => <button class="chip-f" data-filtro={g}>{g}</button>)}
+    </div>
+    <ul class="filas">
+      {f.comisiones.map((x) => {
+        const e = estado(x);
+        const c = curso(x.cursoId);
+        const hoy = c ? planes(c)[0].hoy : 0;
+        return (
+          <li class="fila" data-grupo={x.grupo}>
+            <div class="fila-a"><strong>{x.titulo}</strong><span>{x.dias}, {x.horario} · {x.sede}</span></div>
+            <div class="fila-b"><span>Inicia el {fecha(x.inicio)}</span><em class={`est ${e.clase}`}>{e.texto}</em></div>
+            {x.cupos > 0
+              ? <button class="btn" data-inscribir={x.id}>Inscribirme y pagar<small>{pesos(hoy)} hoy</small></button>
+              : <button class="btn btn-sec" data-avisame>Avisame de la próxima</button>}
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</section>

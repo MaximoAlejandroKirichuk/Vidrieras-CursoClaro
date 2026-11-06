@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-06T18:00:00Z",
+  "title": "Design System: CursoClaro Collection and Institute Demonstrations",
+  "extensions": {
+    "colorMeta": {
+      "gallery-white": { "role": "neutral", "displayName": "Gallery White", "canonical": "#fff" },
+      "gallery-navy": { "role": "primary", "displayName": "Gallery Navy", "canonical": "#142542" },
+      "gallery-muted": { "role": "neutral", "displayName": "Muted Slate", "canonical": "#526079" },
+      "gallery-cobalt": { "role": "primary", "displayName": "Gallery Cobalt", "canonical": "#1c5bc4" },
+      "gallery-cobalt-dark": { "role": "primary", "displayName": "Deep Cobalt", "canonical": "#123f8f" },
+      "gallery-divider": { "role": "neutral", "displayName": "Pale Divider", "canonical": "#d8e2f0" },
+      "gallery-tint": { "role": "neutral", "displayName": "Pale Blue Tint", "canonical": "#f3f7fd" },
+      "gallery-preview-alondra": { "role": "neutral", "displayName": "Collection Alondra Preview Ground", "canonical": "#dfeafb" },
+      "gallery-preview-bisagra": { "role": "neutral", "displayName": "Collection Bisagra Preview Ground", "canonical": "#f3e5cb" },
+      "gallery-preview-sauce": { "role": "neutral", "displayName": "Collection Casa Sauce Preview Ground", "canonical": "#efe4d5" },
+      "gallery-bisagra-accent": { "role": "primary", "displayName": "Collection Bisagra Accent", "canonical": "#a63b04" },
+      "gallery-sauce-accent": { "role": "primary", "displayName": "Collection Casa Sauce Accent", "canonical": "#854029" },
+      "alondra-paper": { "role": "neutral", "displayName": "Alondra Paper", "canonical": "#fff" },
+      "alondra-ink": { "role": "neutral", "displayName": "Alondra Ink", "canonical": "#142542" },
+      "alondra-muted": { "role": "neutral", "displayName": "Alondra Muted Blue-Grey", "canonical": "#4b5f7b" },
+      "alondra-cobalt": { "role": "primary", "displayName": "Alondra Cobalt", "canonical": "#1854bd" },
+      "alondra-cobalt-strong": { "role": "primary", "displayName": "Alondra Deep Cobalt", "canonical": "#103e90" },
+      "alondra-line": { "role": "neutral", "displayName": "Alondra Pale Blue Rule", "canonical": "#bfcee4" },
+      "alondra-soft": { "role": "neutral", "displayName": "Alondra Soft Blue", "canonical": "#edf3fc" },
+      "alondra-opening-blue": { "role": "primary", "displayName": "Alondra Opening Blue", "canonical": "#1854bd" },
+      "alondra-level-yellow": { "role": "secondary", "displayName": "Alondra Level Yellow", "canonical": "#ffdf72" },
+      "alondra-focus-yellow": { "role": "secondary", "displayName": "Alondra Focus Yellow", "canonical": "#ffdf72" },
+      "bisagra-paper": { "role": "neutral", "displayName": "Bisagra Paper", "canonical": "#fff" },
+      "bisagra-ink": { "role": "neutral", "displayName": "Bisagra Ink", "canonical": "#241f1b" },
+      "bisagra-muted": { "role": "neutral", "displayName": "Bisagra Warm Muted", "canonical": "#62584f" },
+      "bisagra-orange": { "role": "secondary", "displayName": "Workshop Orange", "canonical": "#f47a36" },
+      "bisagra-accent": { "role": "primary", "displayName": "Bisagra Burnt Orange", "canonical": "#a93908" },
+      "bisagra-accent-strong": { "role": "primary", "displayName": "Bisagra Deep Orange", "canonical": "#802a05" },
+      "bisagra-yellow": { "role": "secondary", "displayName": "Tool Yellow", "canonical": "#f8d65a" },
+      "bisagra-line": { "role": "neutral", "displayName": "Bisagra Warm Rule", "canonical": "#c8bfb6" },
+      "bisagra-soft": { "role": "neutral", "displayName": "Bisagra Stone", "canonical": "#f2eee8" },
+      "sauce-paper": { "role": "neutral", "displayName": "Sauce Paper", "canonical": "#faf9f6" },
+      "sauce-ink": { "role": "neutral", "displayName": "Sauce Ink", "canonical": "#302b30" },
+      "sauce-muted": { "role": "neutral", "displayName": "Sauce Muted", "canonical": "#625c62" },
+      "sauce-olive": { "role": "primary", "displayName": "Training Olive", "canonical": "#414a30" },
+      "sauce-olive-strong": { "role": "primary", "displayName": "Deep Training Olive", "canonical": "#303923" },
+      "sauce-plum": { "role": "secondary", "displayName": "Training Plum", "canonical": "#50364b" },
+      "sauce-line": { "role": "neutral", "displayName": "Sauce Warm Rule", "canonical": "#d5d2cb" },
+      "sauce-soft": { "role": "neutral", "displayName": "Sauce Soft Olive", "canonical": "#e6e9d9" },
+      "sauce-focus-plum": { "role": "secondary", "displayName": "Sauce Focus Plum", "canonical": "#78536d" }
+    },
+    "typographyMeta": {
+      "gallery-display": { "displayName": "Homepage Display", "purpose": "Collection introduction heading; responsive Figtree." },
+      "gallery-body": { "displayName": "Homepage Body", "purpose": "Collection reading text in Figtree." },
+      "alondra-display": { "displayName": "Alondra Display", "purpose": "Language-school headings and timetable context in Figtree." },
+      "alondra-body": { "displayName": "Alondra Body", "purpose": "Language-school reading and schedule content in Figtree." },
+      "bisagra-display": { "displayName": "Bisagra Display", "purpose": "Condensed practical-course sheet and section headings." },
+      "bisagra-body": { "displayName": "Bisagra Body", "purpose": "Practical course and reservation reading text." },
+      "sauce-display": { "displayName": "Casa Sauce Display", "purpose": "Editorial training-edition headings in Lora Variable." },
+      "sauce-body": { "displayName": "Casa Sauce Body", "purpose": "Training program and edition reading text in Karla Variable." },
+      "demo-session-heading": { "displayName": "Shared Session Heading", "purpose": "Fluid session heading inheriting the active demo display family; Alondra overrides its own instance." },
+      "demo-note": { "displayName": "Demo Note", "purpose": "0.9rem supporting descriptions and empty-result guidance." },
+      "demo-caption": { "displayName": "Demo Caption", "purpose": "0.85rem filter labels, result counts, and session metadata." },
+      "demo-session-meta": { "displayName": "Session Date and Days", "purpose": "0.88rem session date/day text." },
+      "demo-small": { "displayName": "Small Price Suffix", "purpose": "0.8rem suffix and supporting price text." }
+    },
+    "shadows": [
+      { "name": "gallery-preview-image", "value": "0 6px 20px rgb(20 37 66 / 9%)", "purpose": "Subtle separation of homepage preview screenshots from their ground." },
+      { "name": "demo-toast", "value": "0 8px 30px rgb(0 0 0 / 12%)", "purpose": "Shared transient status toast separation." }
+    ],
+    "motion": [
+      { "name": "gallery-action-hover", "value": "background-color .15s ease-out", "purpose": "Homepage project-action hover when reduced motion is not requested." }
+    ],
+    "breakpoints": [
+      { "name": "gallery-frame-tightening", "value": "1000px" },
+      { "name": "gallery-single-column", "value": "799px" },
+      { "name": "demo-mobile-layout", "value": "760px" },
+      { "name": "alondra-session-reflow", "value": "1080px" },
+      { "name": "bisagra-sheet-tightening", "value": "1000px" },
+      { "name": "sauce-wide-tightening", "value": "1000px" },
+      { "name": "sauce-mobile-layout", "value": "760px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Homepage Project Action",
+      "kind": "button",
+      "refersTo": "project-action",
+      "description": "Native route link for opening an institute demonstration; homepage-only styling.",
+      "html": "<a class=\"ds-project-action\" href=\"/idiomas\">Explore demo</a>",
+      "css": ".ds-project-action { display: inline-flex; align-items: center; min-height: 48px; padding: 11px 18px; border-radius: 5px; background: #142542; color: #fff; font: 600 .94rem/1.55 'Figtree Variable', system-ui, sans-serif; text-decoration: none; } .ds-project-action:hover { background: #123f8f; } .ds-project-action:focus-visible { outline: 3px solid #1c5bc4; outline-offset: 5px; }"
+    },
+    {
+      "name": "Alondra Session Picker",
+      "kind": "custom",
+      "refersTo": "alondra-display",
+      "description": "Timetable rows with native course/group selects, live group count, and A1 initial group selection; use only in the Alondra context.",
+      "html": "<section class=\"ds-alondra-picker\"><label>Course<select><option>All courses</option></select></label><label>Level<select><option>A1</option></select></label><p role=\"status\">3 groups</p><ul><li>Sample course, days, time and date <button>Choose group</button></li></ul></section>",
+      "css": ".ds-alondra-picker { color: #142542; font-family: 'Figtree Variable', sans-serif; } .ds-alondra-picker label { display: inline-grid; gap: 7px; margin-right: 16px; font-size: .9rem; } .ds-alondra-picker select { min-height: 48px; padding: 10px 32px 10px 12px; border: 1px solid #bfcee4; border-radius: 4px; background: #fff; color: #142542; font: inherit; } .ds-alondra-picker li { padding: 18px 20px; border-top: 1px solid #bfcee4; } .ds-alondra-picker button { min-height: 48px; padding: 10px 16px; border: 1px solid #1854bd; border-radius: 4px; background: #1854bd; color: #fff; font: 600 .95rem 'Figtree Variable', sans-serif; } .ds-alondra-picker button:focus-visible { outline: 3px solid #1854bd; outline-offset: 4px; }"
+    },
+    {
+      "name": "Bisagra Course Sheet",
+      "kind": "custom",
+      "refersTo": "bisagra-display",
+      "description": "Featured practical course information and reservation strip; composition specific to Bisagra.",
+      "html": "<section class=\"ds-bisagra-sheet\"><div><h2>Curso intensivo</h2><p>Descripción práctica del curso</p></div><dl><div><dt>Duración</dt><dd>Ejemplo</dd></div></dl></section>",
+      "css": ".ds-bisagra-sheet { display: grid; grid-template-columns: 1.4fr 1fr; gap: 32px 56px; padding: 36px 40px; background: #f47a36; color: #241f1b; } .ds-bisagra-sheet h2 { font: 700 clamp(2.25rem, 4vw, 3.6rem)/1.04 'Barlow Condensed', sans-serif; } .ds-bisagra-sheet dt { font: 400 .9rem 'Barlow', sans-serif; } .ds-bisagra-sheet dd { font: 600 1.05rem/1.3 'Barlow', sans-serif; } @media (max-width: 760px) { .ds-bisagra-sheet { grid-template-columns: 1fr; padding: 24px; gap: 24px; } }"
+    },
+    {
+      "name": "Casa Sauce Course Disclosure",
+      "kind": "custom",
+      "refersTo": "sauce-display",
+      "description": "Editorial open-row course pattern within the Casa Sauce related-program section.",
+      "html": "<details class=\"ds-sauce-course\"><summary><span>Curso relacionado</span><small>Duración de ejemplo</small></summary><div><p>Información del curso.</p></div></details>",
+      "css": ".ds-sauce-course { border-top: 1px solid #babfac; color: #302b30; font-family: 'Karla Variable', sans-serif; } .ds-sauce-course:last-child { border-bottom: 1px solid #babfac; } .ds-sauce-course summary { min-height: 74px; padding: 18px 0 18px 24px; } .ds-sauce-course summary span { font: 600 1.12rem 'Karla Variable', sans-serif; } .ds-sauce-course small { display: block; margin-top: 3px; color: #545a47; font: .88rem 'Karla Variable', sans-serif; } .ds-sauce-course > div { padding: 0 0 16px 24px; } .ds-sauce-course summary:focus-visible { outline: 3px solid #78536d; outline-offset: 4px; }"
+    },
+    {
+      "name": "Shared Demo Checkout Dialog",
+      "kind": "custom",
+      "description": "Native simulated checkout with persistent toolbar close control and independently scrolling body; active route variables theme it.",
+      "html": "<dialog class=\"ds-checkout\"><div class=\"ds-toolbar\"><button aria-label=\"Close enrollment\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" aria-hidden=\"true\"><path d=\"m6 6 12 12M18 6 6 18\" /></svg></button></div><div class=\"ds-body\"><h3>Plan</h3><p>Demonstration enrollment. No real charges.</p></div></dialog>",
+      "css": ".ds-checkout { width: min(560px, calc(100% - 24px)); max-height: calc(100dvh - 24px); padding: 0; border: 1px solid var(--demo-line, #bfcee4); border-radius: 12px; background: var(--demo-paper, #fff); color: var(--demo-ink, #142542); overflow: hidden; } .ds-checkout::backdrop { background: rgb(10 20 30 / 65%); } .ds-toolbar { display: flex; justify-content: flex-end; padding: 6px 8px; background: var(--demo-paper, #fff); } .ds-toolbar button { width: 44px; height: 44px; border: 0; background: none; color: inherit; } .ds-body { max-height: calc(100dvh - 100px); padding: 0 24px 24px; overflow-y: auto; overscroll-behavior: contain; } .ds-body h3 { font: 600 1.4rem/1.2 var(--demo-display, system-ui); } @media (max-width: 760px) { .ds-body { padding: 0 18px 24px; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Three Institute Worlds, One Honest Frame",
+    "overview": "CursoClaro is a work-first collection, not one universal storefront theme. Its homepage uses a restrained white, navy, cobalt, and Figtree gallery frame to introduce three fictional demonstrations. Each route then owns its own typography, palette, and composition: Alondra Idiomas is a cobalt timetable-first language school; Bisagra is an orange-and-yellow practical-trades course sheet; Casa Sauce is a plum-and-olive principal training edition. Do not flatten these identities into a shared marketing-page template.\n\nThe routes share useful behavior and infrastructure: the demo shell, accessible baseline, action primitives, native disclosures and controls, session filtering, and simulated checkout. Those shared mechanics take each route's scoped variables; they do not dictate common section order or visual composition. The examples and payment journey are explicitly demonstrations, not real institutes, integrations, proof, or administration tools.",
+    "keyCharacteristics": [
+      "The homepage is a quiet collection frame; demo routes have independent visual worlds.",
+      "Alondra leads with a preselected A1 timetable and scannable session rows.",
+      "Bisagra reads as a practical course sheet, reservation strip, and open course rows.",
+      "Casa Sauce reads as a principal training edition with editorial serif display and olive course surfaces.",
+      "Shared behavior is functional infrastructure, not a common marketing composition."
+    ],
+    "rules": [
+      { "name": "The Scoped-World Rule", "body": "A route's palette applies only within that institute context. Shared components consume the active demo variables; never translate three accents into a single global palette.", "section": "colors" },
+      { "name": "The Three-Family Rule", "body": "Keep Figtree, Barlow/Barlow Condensed, and Lora/Karla assigned to their actual collection, Alondra, Bisagra, and Sauce contexts respectively.", "section": "typography" }
+    ],
+    "dos": [
+      "Do keep gallery tokens and composition scoped to the homepage and each demo's tokens scoped to its route.",
+      "Do preserve Alondra's A1-initial timetable and the session picker's native filtering, count, empty state, reset, and focus behavior.",
+      "Do preserve Bisagra's course-sheet/reservation-strip composition and Casa Sauce's training-edition composition.",
+      "Do reuse shared shell, accessible controls, session filtering, and simulated checkout as behavior without forcing common marketing sections.",
+      "Do describe fictional institutes and simulated payment honestly; use only verified content and implemented behavior."
+    ],
+    "donts": [
+      "Don't apply homepage typography or color tokens to all three demos, or consolidate their distinct visual worlds.",
+      "Don't treat legacy styles or unused generic marketing components/data as active design authority for these routes.",
+      "Don't claim real customers, testimonials, outcomes, payments, reservations, confirmation actions, or an administrative panel.",
+      "Don't replace native selects, disclosures, or dialog behavior with nonfunctional visual stand-ins."
+    ]
+  }
+}

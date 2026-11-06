@@ -1,0 +1,23 @@
+{
+  "name": "cursoclaro-vidrieras",
+  "version": "1.0.0",
+  "description": "Vidrieras de ejemplo por nicho: idiomas, oficios y holístico",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && node scripts/relativizar.mjs",
+    "preview": "astro preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fontsource-variable/figtree": "^5.3.0",
+    "@fontsource-variable/karla": "^5.3.0",
+    "@fontsource-variable/lora": "^5.3.0",
+    "@fontsource/barlow": "^5.3.0",
+    "@fontsource/barlow-condensed": "^5.3.0",
+    "astro": "^7.4.4"
+  },
+  "private": true,
+  "type": "module"
+}

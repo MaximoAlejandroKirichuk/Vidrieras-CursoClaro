@@ -1,0 +1,75 @@
+---
+import '@fontsource-variable/figtree';
+import '../styles/collection.css';
+import ProjectPreview from '../components/ProjectPreview.astro';
+
+const projects = [
+  {
+    id: 'idiomas', name: 'Alondra Idiomas', category: 'Idiomas',
+    summary: 'El curso indicado, en el grupo y horario que te sirven.',
+    description: 'Una escuela de idiomas donde el recorrido empieza por el nivel del alumno. Los grupos, los horarios y el precio se pueden consultar antes de inscribirse.',
+    interactions: ['Filtrar los grupos por nivel.', 'Elegir un horario con lugares disponibles.', 'Comparar las formas de pago en la inscripción.'],
+  },
+  {
+    id: 'oficios', name: 'Bisagra', category: 'Escuela de oficios',
+    summary: 'Del primer intensivo a la reserva de un lugar en el taller.',
+    description: 'Una escuela de oficios con cursos presenciales y fechas por sede. La inscripción permite elegir entre una seña, cuotas o pago completo, según el curso.',
+    interactions: ['Consultar las fechas de cada sede.', 'Probar una reserva con seña.', 'Sumar un kit de herramientas en los cursos que lo incluyen como opción.'],
+  },
+  {
+    id: 'holistico', name: 'Casa Sauce', category: 'Yoga y terapias',
+    summary: 'Una formación para conocer con tiempo, antes de elegir una edición.',
+    description: 'Una escuela de yoga y terapias que presenta su propuesta, el recorrido de formación y sus próximas ediciones. La inscripción reúne modalidad, fecha y plan de pago.',
+    interactions: ['Recorrer las formaciones y sus contenidos.', 'Filtrar las próximas ediciones.', 'Elegir un plan y simular la inscripción.'],
+  },
+];
+---
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CursoClaro · Experiencias de ejemplo para institutos</title>
+    <meta name="description" content="Explorá tres ejemplos para institutos: idiomas, oficios y yoga. Recorré las tiendas y probá una inscripción con pago simulado." />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <header class="collection-header frame">
+      <a class="collection-brand" href="#">CursoClaro<span>Ejemplos para institutos</span></a>
+      <nav aria-label="Experiencias de ejemplo">
+        <a href="#idiomas">Idiomas</a>
+        <a href="#oficios">Oficios</a>
+        <a href="#holistico">Yoga y terapias</a>
+      </nav>
+    </header>
+    <main id="contenido" class="frame">
+      <section class="collection-intro" aria-labelledby="collection-title">
+        <h1 id="collection-title">Diseño y recorridos<br />para institutos.</h1>
+        <div class="collection-intro-copy">
+          <p>Entrá a un ejemplo, elegí un curso y probá la inscripción hasta el pago simulado.</p>
+          <p class="simulation-note">Son demos con institutos, precios y opiniones ficticios. No realizan cobros.</p>
+        </div>
+      </section>
+      <div class="project-list">
+        {projects.map((project, index) => <ProjectPreview {...project} first={index === 0} reverse={index === 1} />)}
+      </div>
+      <section class="try-it" aria-labelledby="try-title">
+        <div>
+          <h2 id="try-title">Probalo como si fueras un alumno.</h2>
+          <p>Estos ejemplos muestran distintas maneras de presentar e inscribir a cursos. Podés recorrerlos completos sin usar datos personales ni pagar.</p>
+        </div>
+        <ol>
+          <li><strong>Elegí un curso y una fecha.</strong><span>Entrá a una demo y buscá un grupo con lugares disponibles.</span></li>
+          <li><strong>Probá la inscripción.</strong><span>Compará los planes de pago y seguí con los datos de ejemplo que ya están cargados.</span></li>
+          <li><strong>Llegá a la confirmación.</strong><span>El pago es una simulación: no hay conexión real con Mercado Pago ni se cobra dinero.</span></li>
+        </ol>
+      </section>
+    </main>
+    <footer class="collection-footer frame">
+      <p><strong>CursoClaro</strong> · Colección de experiencias de ejemplo</p>
+      <a href="#collection-title">Volver al inicio</a>
+    </footer>
+  </body>
+</html>

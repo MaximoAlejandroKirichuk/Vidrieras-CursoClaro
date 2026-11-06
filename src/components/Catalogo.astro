@@ -1,0 +1,14 @@
+---
+import FichaCurso from './FichaCurso.astro';
+const { i } = Astro.props;
+const k = i.catalogo;
+---
+<section class="seccion catalogo" id="cursos">
+  <div class="caja">
+    <h2>{k.titulo}</h2>
+    <p class="sub">{k.bajada}</p>
+    <div class:list={['fichas', { 'fichas-pasos': k.pasos }]}>
+      {k.cursos.map((c, n) => <FichaCurso i={i} c={c} n={n + 1} />)}
+    </div>
+  </div>
+</section>

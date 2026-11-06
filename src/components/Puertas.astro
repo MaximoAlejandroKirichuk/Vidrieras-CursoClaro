@@ -1,0 +1,16 @@
+---
+const { i } = Astro.props;
+const p = i.puertas;
+---
+{p && (
+<section class="seccion puertas" id="nivel">
+  <div class="caja">
+    <h2>{p.titulo}</h2>
+    <p class="sub">{p.bajada}</p>
+    <div class="puertas-grid">
+      {p.items.map((x) => (
+        <a class="puerta" href="#fechas" data-ir-grupo={x.grupo}><strong>{x.t}</strong><span>{x.d}</span><em>Ver grupos {x.grupo}</em></a>
+      ))}
+    </div>
+  </div>
+</section>)}

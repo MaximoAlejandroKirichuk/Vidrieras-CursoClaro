@@ -1,0 +1,11 @@
+---
+const { i } = Astro.props;
+const g = i.gratis;
+---
+{g && (
+<section class="seccion gratis" id="gratis">
+  <div class="caja gratis-in">
+    <div><h2>{g.titulo}</h2><p>{g.bajada}</p><p class="gratis-fecha">{g.fecha}</p></div>
+    <button class="btn btn-sec" data-avisame="Anotada. En la tienda real te llega la confirmación y el recordatorio.">{g.boton}</button>
+  </div>
+</section>)}

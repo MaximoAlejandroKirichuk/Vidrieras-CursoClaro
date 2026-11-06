@@ -1,0 +1,132 @@
+---
+import { datosCheckout } from '../lib/precios';
+const { i } = Astro.props;
+const datos = JSON.stringify(datosCheckout(i));
+---
+<dialog id="cc" class="cc" aria-label="Inscripción">
+  <div class="cc-toolbar"><button class="cc-x" data-cerrar aria-label="Cerrar inscripción"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg></button></div>
+  <div id="cc-cuerpo"></div>
+</dialog>
+<div class="toast" id="toast" role="status"></div>
+<script is:inline type="application/json" id="cc-datos" set:html={datos}></script>
+<script is:inline>
+(function () {
+  var D = JSON.parse(document.getElementById('cc-datos').textContent);
+  var dlg = document.getElementById('cc'), cuerpo = document.getElementById('cc-cuerpo'), toast = document.getElementById('toast');
+  var $ = function (n) { return '$' + Math.round(n).toLocaleString('es-AR'); };
+  var st = {};
+  var paymentTimer;
+  var paymentAttempt = 0;
+
+  function focusStep() {
+    clearTimeout(paymentTimer);
+    paymentAttempt++;
+    var heading = cuerpo.querySelector('h3');
+    if (heading) { heading.tabIndex = -1; if (dlg.open) heading.focus(); }
+    dlg.scrollTop = 0;
+    cuerpo.scrollTop = 0;
+    cuerpo.removeAttribute('aria-busy');
+  }
+
+  function aviso(t) {
+    toast.textContent = t; toast.classList.add('ver');
+    clearTimeout(aviso.t); aviso.t = setTimeout(function () { toast.classList.remove('ver'); }, 3800);
+  }
+  function cabecera(paso) {
+    var nombres = ['Plan', 'Tus datos', 'Pago'];
+    return '<ol class="cc-pasos">' + nombres.map(function (n, i) {
+      return '<li' + (i + 1 === paso ? ' aria-current="step"' : '') + ' class="' + (i + 1 === paso ? 'hoy' : i + 1 < paso ? 'ok' : '') + '">' + n + '</li>';
+    }).join('') + '</ol><p class="cc-nota">Inscripción de demostración. No se envían datos ni se realizan cobros.</p>';
+  }
+  function resumen() {
+    var x = st.com;
+    var kit = st.kit && st.curso.kit ? '<span>Kit de herramientas: ' + $(st.curso.kit.monto) + (st.plan.id === 'unico' ? ', incluido en el pago de ejemplo.' : ', se sumaría al saldo pendiente.') + '</span>' : '';
+    return '<div class="cc-res"><strong>' + st.curso.nombre + '</strong><span>' + x.dias + ', ' + x.horario + ' · ' + x.sede + '</span><span>Inicia el ' + x.inicio + '</span>' + kit + '</div>';
+  }
+  function hoy() {
+    var p = st.plan, kit = st.kit && st.curso.kit ? st.curso.kit.monto : 0;
+    return p.id === 'unico' ? p.hoy + kit : p.hoy;
+  }
+  function paso1() {
+    var k = st.curso.kit;
+    cuerpo.innerHTML = cabecera(1) + resumen() + '<h3 id="cc-t">¿Cómo querés pagar?</h3><div class="cc-planes">' +
+      st.curso.planes.map(function (p, n) {
+        return '<label class="cc-plan"><input type="radio" name="plan" value="' + n + '"' + (st.plan === p ? ' checked' : '') + '><span><b>' + p.titulo + '</b><small>' + p.detalle + '</small></span><strong>' + $(p.hoy) + '<small>hoy</small></strong></label>';
+      }).join('') + '</div>' +
+      (k ? '<label class="cc-kit"><input type="checkbox" id="cc-kit"' + (st.kit ? ' checked' : '') + '><span><b>Sumar kit de herramientas (+' + $(k.monto) + ')</b><small>' + k.detalle + ' Si pagás con seña o en cuotas, se suma al saldo.</small></span></label>' : '') +
+      '<button class="btn btn-bloque" id="cc-s1">Continuar</button>';
+    cuerpo.querySelectorAll('[name=plan]').forEach(function (r) {
+      r.addEventListener('change', function () { st.plan = st.curso.planes[+r.value]; });
+    });
+    var ck = document.getElementById('cc-kit');
+    if (ck) ck.addEventListener('change', function () { st.kit = ck.checked; });
+    document.getElementById('cc-s1').addEventListener('click', paso2);
+    focusStep();
+  }
+  function paso2() {
+    cuerpo.innerHTML = cabecera(2) + resumen() + '<h3>Tus datos</h3>' +
+      '<p class="cc-nota">Es una demo: dejamos datos de ejemplo y no se envía ni se guarda nada.</p>' +
+      '<form id="cc-f"><label>Nombre y apellido<input required value="Valentina Ríos" autocomplete="off"></label>' +
+      '<label>Email<input required type="email" value="valentina@ejemplo.com" autocomplete="off"></label>' +
+      '<label>WhatsApp<input required type="tel" value="11 0000-0000" autocomplete="off"></label>' +
+      '<button class="btn btn-bloque">Continuar al pago simulado</button></form>' +
+      '<button class="cc-volver" id="cc-v">Volver</button>';
+    document.getElementById('cc-f').addEventListener('submit', function (e) { e.preventDefault(); paso3(); });
+    document.getElementById('cc-v').addEventListener('click', paso1);
+    focusStep();
+  }
+  function paso3() {
+    cuerpo.innerHTML = cabecera(3) + '<div class="mp"><p class="mp-etq">Pago simulado</p><h3>Mercado Pago</h3>' +
+      '<p class="mp-monto">' + $(hoy()) + '</p><p class="mp-det">' + D.instituto + ' · ' + st.curso.nombre + '</p>' +
+      '<p class="mp-det">' + st.plan.titulo + '</p>' +
+      '<button class="mp-btn" id="cc-mp">Simular pago</button>' +
+      '<p class="cc-nota">Ejemplo sin integración real: este botón no cobra ni pide datos de pago.</p></div>' +
+      '<button class="cc-volver" id="cc-v">Volver</button>';
+    document.getElementById('cc-v').addEventListener('click', paso2);
+    document.getElementById('cc-mp').addEventListener('click', function () {
+      this.disabled = true; this.textContent = 'Procesando…';
+      cuerpo.setAttribute('aria-busy', 'true');
+      var attempt = ++paymentAttempt;
+      paymentTimer = setTimeout(function () { if (dlg.open && attempt === paymentAttempt) paso4(); }, 1100);
+    });
+    focusStep();
+  }
+  function paso4() {
+    cuerpo.innerHTML = '<div class="ok"><div class="ok-sim" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><circle cx="16" cy="16" r="14"/><path d="m9 16 5 5 9-10"/></svg></div><h3>Inscripción simulada confirmada</h3>' +
+      '<p class="cc-nota">Completaste el recorrido de ejemplo. No se reservó un lugar real ni se realizó un cobro.</p>' + resumen() +
+      '<p class="cc-pagado">Pago de ejemplo: ' + $(hoy()) + ' · ' + st.plan.titulo + '</p>' +
+      '<h4>Lo que probaste en esta demo</h4><ol class="ok-sigue"><li>Elegiste un curso, un grupo y un plan de pago.</li><li>Revisaste una inscripción con datos ficticios.</li><li>Simulaste el pago y su confirmación, sin enviar información ni dinero.</li></ol>' +
+      '<button class="btn btn-bloque" data-cerrar>Volver a los cursos</button></div>';
+    focusStep();
+  }
+  function abrir(id) {
+    var com = D.comisiones[id];
+    if (!com) return;
+    st = { com: com, curso: D.cursos[com.cursoId], kit: false };
+    st.plan = st.curso.planes[0];
+    paso1();
+    dlg.showModal();
+    focusStep();
+  }
+  function wa() {
+    var m = 'Hola, tengo una duda sobre ' + (st.curso ? st.curso.nombre : 'los cursos') + '.';
+    if (D.whatsapp) window.open('https://wa.me/' + D.whatsapp + '?text=' + encodeURIComponent(m));
+    else aviso('Consulta simulada. No se envió ningún mensaje. Ejemplo: “' + m + '”');
+  }
+  function filtrar(g) {
+    document.querySelectorAll('.chip-f').forEach(function (c) { c.classList.toggle('activo', c.dataset.filtro === g); });
+    document.querySelectorAll('.fila').forEach(function (f) { f.hidden = !(g === 'todos' || f.dataset.grupo === g); });
+  }
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-inscribir],[data-avisame],[data-wa],[data-cerrar],[data-filtro],[data-ir-grupo]');
+    if (!t) { if (e.target === dlg) dlg.close(); return; }
+    if (t.dataset.inscribir !== undefined) abrir(t.dataset.inscribir);
+    else if (t.dataset.avisame !== undefined) aviso('Solicitud simulada: no se guardó ni se envió ningún dato.');
+    else if (t.dataset.wa !== undefined) wa();
+    else if (t.dataset.cerrar !== undefined) dlg.close();
+    else if (t.dataset.filtro) filtrar(t.dataset.filtro);
+    else if (t.dataset.irGrupo) filtrar(t.dataset.irGrupo);
+  });
+  dlg.addEventListener('close', function () { clearTimeout(paymentTimer); paymentAttempt++; cuerpo.removeAttribute('aria-busy'); });
+})();
+</script>

@@ -1,0 +1,18 @@
+---
+const { i } = Astro.props;
+const d = i.docente;
+---
+{d && (
+<section class="seccion docente" id="docente">
+  <div class="caja docente-in">
+    <div class="docente-foto" aria-hidden="true"><span>{d.nombre.split(' ').map((p: string) => p[0]).join('')}</span></div>
+    <div>
+      <p class="chip">{d.titulo}</p>
+      <h2>{d.nombre}</h2>
+      <p class="docente-rol">{d.rol}</p>
+      <p>{d.bio}</p>
+      <blockquote>{d.cita}</blockquote>
+      <ul class="ficha-datos">{d.datos.map((x: string) => <li>{x}</li>)}</ul>
+    </div>
+  </div>
+</section>)}

@@ -1,0 +1,11 @@
+---
+const { i } = Astro.props;
+---
+<section class="cta">
+  <div class="caja cta-in">
+    <h2>{i.cta.titulo}</h2>
+    <p>{i.cta.bajada}</p>
+    <a class="btn" href={i.cta.href}>{i.cta.boton}</a>
+    <button class="cta-wa" data-wa>¿Tenés una duda? Escribinos por WhatsApp</button>
+  </div>
+</section>

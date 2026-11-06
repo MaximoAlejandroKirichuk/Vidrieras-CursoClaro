@@ -1,0 +1,7 @@
+---
+const { i } = Astro.props;
+---
+<a class="marca" href="#inicio" aria-label={i.nombre}>
+  <span class="marca-sim" aria-hidden="true">{i.nombreCorto[0]}</span>
+  <span>{i.nombreCorto}</span>
+</a>

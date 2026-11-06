@@ -1,0 +1,25 @@
+---
+const { i } = Astro.props;
+const p = i.panel;
+---
+<section class="dueno" aria-label="Lo que ve el dueño del instituto">
+  <div class="caja dueno-in">
+    <div>
+      <p class="dueno-etq">Del lado de {i.nombreCorto}</p>
+      <h2>Cada pago queda registrado solo, con las cuotas y quién debe.</h2>
+      <p>El alumno paga y el panel anota todo: alumno, inscripción, pago y próximas cuotas. Nadie carga un Excel ni pide comprobantes.</p>
+    </div>
+    <div class="panel" role="img" aria-label={`Panel de ejemplo: ${p.alumnos} alumnos, ${p.alDia} al día, ${p.vencidas} con cuotas vencidas`}>
+      <div class="panel-bar"><span></span><span></span><span></span><b>Panel · {i.nombreCorto}</b></div>
+      <ul class="panel-kpi">
+        <li><strong>{p.alumnos}</strong><span>Alumnos</span></li>
+        <li><strong>{p.alDia}</strong><span>Al día</span></li>
+        <li class="malo"><strong>{p.vencidas}</strong><span>Vencidas</span></li>
+        <li><strong>{p.cobrado}</strong><span>Cobrado este mes</span></li>
+      </ul>
+      <ul class="panel-filas">
+        {p.filas.map((f) => <li><span><b>{f.alumno}</b>{f.curso}</span><span>Cuota {f.cuota}</span><em class={`est ${f.estado === 'Vencida' ? 'lleno' : f.estado === 'Vence hoy' ? 'ultimo' : 'libre'}`}>{f.estado}</em></li>)}
+      </ul>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,23 @@
+---
+const { i } = Astro.props;
+const p = i.prueba;
+const iconos = ['M6 6h20v20H6zM12 6v20M20 6v20M6 14h20', 'M8 8c8 2 8 14 16 16M24 8C16 10 16 22 8 24', 'M16 5c5 6 7 11 7 15a7 7 0 0 1-14 0c0-4 2-9 7-15z', 'M5 5h22v22H5zM5 14h22M14 14v13'];
+---
+<section class="seccion prueba" id="prueba">
+  <div class="caja">
+    <h2>{p.titulo}</h2>
+    <p class="rating"><span aria-hidden="true">★</span> {p.rating}</p>
+    {p.galeria && (
+      <ul class="galeria">
+        {p.galeria.map((g, n) => (
+          <li><svg viewBox="0 0 32 32" aria-hidden="true"><path d={iconos[n % 4]} fill="none" stroke="currentColor" stroke-width="1.6"/></svg><strong>{g.titulo}</strong><span>{g.autor}</span></li>
+        ))}
+      </ul>
+    )}
+    <div class="testimonios">
+      {p.testimonios.map((t) => (
+        <blockquote><p>{t.texto}</p><footer><strong>{t.nombre}</strong><span>{t.dato}</span></footer></blockquote>
+      ))}
+    </div>
+  </div>
+</section>

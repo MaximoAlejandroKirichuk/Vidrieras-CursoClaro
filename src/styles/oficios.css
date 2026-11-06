@@ -1,0 +1,119 @@
+html[data-nicho="oficios"] {
+  --demo-paper: #fff;
+  --demo-ink: #241f1b;
+  --demo-muted: #62584f;
+  --demo-accent: #a93908;
+  --demo-accent-strong: #802a05;
+  --demo-on-accent: #fff;
+  --demo-line: #c8bfb6;
+  --demo-soft: #f2eee8;
+  --demo-focus: #8c3005;
+  --demo-body: 'Barlow', sans-serif;
+  --demo-display: 'Barlow Condensed', sans-serif;
+  --bisagra-orange: #f47a36;
+  --bisagra-yellow: #f8d65a;
+  scrollbar-color: #8c7363 #f2eee8;
+}
+
+html[data-nicho="oficios"] input { caret-color: var(--demo-accent); }
+.bisagra-header { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-block: 24px; }
+.bisagra-brand { display: flex; align-items: center; gap: 16px; text-decoration: none; }
+.bisagra-brand > strong { font: 700 2.65rem/1 var(--demo-display); letter-spacing: -.025em; }
+.bisagra-brand strong span { color: var(--demo-accent); }
+.bisagra-brand > span { max-width: 9ch; font-size: .9rem; font-weight: 500; line-height: 1.2; }
+.bisagra-header nav { display: flex; flex-wrap: wrap; gap: 8px 28px; }
+.bisagra-header nav a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; text-decoration: none; }
+.bisagra-header nav a:hover { color: var(--demo-accent); text-decoration: underline; }
+.bisagra-main :is(section, article) { scroll-margin-top: 24px; }
+.bisagra-intro { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding-block: 24px; }
+.bisagra-intro h1 { margin: 0; font: 600 clamp(1.75rem, 3vw, 2.5rem)/1.1 var(--demo-display); }
+.bisagra-intro p { max-width: 48ch; margin: 0; color: var(--demo-muted); font-size: .95rem; }
+.bisagra-intensive { background: var(--bisagra-orange); }
+.bisagra-sheet { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 32px 56px; padding: 36px 40px; }
+.bisagra-sheet-title h2 { max-width: 20ch; margin: 0 0 16px; font: 700 clamp(2.25rem, 4vw, 3.6rem)/1.04 var(--demo-display); letter-spacing: -.02em; }
+.bisagra-sheet-title p { max-width: 46ch; margin: 0; font-size: 1.1rem; }
+.bisagra-specs { display: grid; grid-template-columns: 1fr 1fr; align-content: start; gap: 24px; margin: 4px 0 0; }
+.bisagra-specs dt { margin-bottom: 4px; font-size: .9rem; }
+.bisagra-specs dd { margin: 0; font-weight: 600; font-size: 1.05rem; line-height: 1.3; }
+.bisagra-included { display: flex; grid-column: 1 / -1; align-items: baseline; gap: 24px; border-top: 1px solid #9c4218; padding-top: 18px; }
+.bisagra-included h3 { margin: 0; font-size: .95rem; font-weight: 600; }
+.bisagra-included ul { display: flex; flex-wrap: wrap; gap: 4px 32px; margin: 0; padding-left: 18px; font-size: .95rem; }
+.bisagra-reserve-strip { display: grid; grid-template-columns: 1.25fr 1fr auto; align-items: center; gap: 24px; padding: 24px 40px; background: var(--bisagra-yellow); }
+.bisagra-next, .bisagra-price { display: grid; gap: 4px; }
+.bisagra-next span, .bisagra-price { font-size: .9rem; }
+.bisagra-next strong { font-size: 1.2rem; line-height: 1.25; }
+.bisagra-next time { text-transform: capitalize; }
+.bisagra-price > span:first-child { font-weight: 700; font-size: 1.2rem; }
+.bisagra-price strong { font-weight: 500; }
+.bisagra-price, .bisagra-course-booking { font-variant-numeric: tabular-nums; }
+.bisagra-catalog-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin: 48px 0 20px; }
+.bisagra-catalog-heading h2, .bisagra-faq h2 { margin: 0; font: 600 clamp(1.7rem, 3vw, 2.25rem)/1.15 var(--demo-display); }
+.bisagra-catalog-heading p { margin: 0; color: var(--demo-muted); font-size: .95rem; }
+.bisagra-course { display: grid; grid-template-columns: minmax(0, 1fr) 270px; gap: 40px; padding-block: 22px; border-top: 1px solid var(--demo-line); }
+.bisagra-course summary { position: relative; padding: 0 32px 0 0; list-style: none; }
+.bisagra-course summary::-webkit-details-marker { display: none; }
+.bisagra-course summary::after { content: ''; position: absolute; right: 4px; top: 12px; width: 10px; height: 10px; border-bottom: 2px solid currentColor; border-right: 2px solid currentColor; transform: rotate(45deg); }
+.bisagra-course details[open] summary::after { top: 16px; transform: rotate(225deg); }
+.bisagra-course h3 { margin: 0 0 4px; font: 600 1.65rem/1.2 var(--demo-display); }
+.bisagra-course summary > span { display: block; color: var(--demo-muted); font-size: .95rem; }
+.bisagra-course summary .bisagra-detail-label { margin-top: 6px; color: var(--demo-accent); font-size: .85rem; text-decoration: underline; }
+.bisagra-course summary:hover h3 { color: var(--demo-accent); }
+.bisagra-course-content { padding-top: 20px; max-width: 68ch; }
+.bisagra-course-content ul { padding-left: 20px; margin-block: 12px 20px; }
+.bisagra-course-content p { margin-bottom: 12px; }
+.bisagra-kit { color: var(--demo-muted); }
+.bisagra-course-booking { display: flex; flex-direction: column; align-items: start; justify-content: start; }
+.bisagra-course-booking p { margin: 0; }
+.bisagra-course-booking strong { display: block; font-size: 1.05rem; font-weight: 600; }
+.bisagra-course-booking span { display: block; color: var(--demo-muted); font-size: .9rem; }
+.bisagra-course-booking .demo-link { font-size: .95rem; font-weight: 600; }
+.bisagra-reservation { margin-top: 40px; padding-block: 40px; background: var(--demo-soft); }
+.bisagra-reservation-note { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 32px; }
+.bisagra-reservation-note > p:first-child { max-width: 22ch; margin: 0; font: 600 1.9rem/1.15 var(--demo-display); }
+.bisagra-reservation-note > p:last-child { max-width: 62ch; margin: 0; color: var(--demo-muted); font-size: .95rem; }
+.bisagra-locations { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 24px; border-top: 1px solid var(--demo-line); padding-top: 24px; margin-top: 20px; }
+.bisagra-locations h3 { margin: 0; font-size: 1rem; font-weight: 600; }
+.bisagra-locations p { margin: 0; font-size: .95rem; }
+.bisagra-locations > span { flex-basis: 100%; color: var(--demo-muted); font-size: .85rem; }
+.bisagra-faq { display: grid; grid-template-columns: 1fr 1.5fr; gap: 64px; padding-top: 56px; }
+.bisagra-faq-intro p { margin: 12px 0 0; max-width: 32ch; color: var(--demo-muted); }
+.bisagra-faq .demo-faq { margin-top: 0; min-width: 0; }
+
+@media (max-width: 1000px) {
+  .bisagra-sheet { gap: 24px 32px; padding: 28px; }
+  .bisagra-reserve-strip { grid-template-columns: 1fr 1fr; padding: 24px 28px; }
+  .bisagra-reserve-strip .demo-button { grid-column: 1 / -1; justify-self: start; }
+  .bisagra-intro { align-items: start; }
+  .bisagra-intro p { max-width: 38ch; }
+}
+@media (max-width: 760px) {
+  .bisagra-header { flex-wrap: wrap; gap: 12px; padding-block: 20px 8px; }
+  .bisagra-header nav { gap: 8px 24px; }
+  .bisagra-intro { display: block; padding-block: 24px; }
+  .bisagra-intro p { max-width: 60ch; margin-top: 12px; }
+  .bisagra-sheet { grid-template-columns: 1fr; padding: 24px; gap: 24px; }
+  .bisagra-sheet-title h2 { max-width: 22ch; }
+  .bisagra-sheet-title p { font-size: 1rem; }
+  .bisagra-specs { gap: 20px; }
+  .bisagra-included { display: block; }
+  .bisagra-included ul { display: block; margin-top: 8px; }
+  .bisagra-reserve-strip { padding: 24px; gap: 20px; }
+  .bisagra-catalog-heading { display: block; margin-top: 36px; }
+  .bisagra-catalog-heading p { margin-top: 8px; }
+  .bisagra-course { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .bisagra-course-booking { flex-direction: row; justify-content: space-between; align-items: center; gap: 12px; }
+  .bisagra-course-booking .demo-link { flex-shrink: 0; }
+  .bisagra-reservation-note { grid-template-columns: 1fr; gap: 16px; }
+  .bisagra-faq { grid-template-columns: 1fr; gap: 24px; padding-top: 40px; }
+  .bisagra-faq-intro p { max-width: 52ch; }
+}
+@media (max-width: 440px) {
+  .bisagra-brand > strong { font-size: 2.4rem; }
+  .bisagra-header nav { justify-content: space-between; width: 100%; gap: 8px; font-size: .9rem; }
+  .bisagra-sheet, .bisagra-reserve-strip { padding: 20px; }
+  .bisagra-specs { grid-template-columns: 1fr; gap: 12px; }
+  .bisagra-specs > div { display: grid; grid-template-columns: 90px 1fr; gap: 12px; }
+  .bisagra-reserve-strip { grid-template-columns: 1fr; }
+  .bisagra-reserve-strip .demo-button { width: 100%; }
+  .bisagra-course-booking { flex-wrap: wrap; }
+}

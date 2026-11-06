@@ -1,0 +1,24 @@
+---
+import Arte from './Arte.astro';
+const { i } = Astro.props;
+const h = i.hero;
+---
+<section class="hero" id="inicio">
+  <div class="caja hero-in">
+    <div class="hero-txt">
+      <p class="chip">{h.chip}</p>
+      <h1>{h.h1}</h1>
+      <p class="bajada">{h.bajada}</p>
+      <ul class="hero-datos">
+        {h.datos.map((d) => <li><strong>{d.valor}</strong><span>{d.rotulo}</span></li>)}
+      </ul>
+      <p class="hero-precio"><strong>{h.precio}</strong><span>{h.precioNota}</span></p>
+      <div class="acciones">
+        <a class="btn" href={h.cta.href}>{h.cta.texto}</a>
+        <a class="btn btn-sec" href={h.ctaSec.href}>{h.ctaSec.texto}</a>
+      </div>
+      <p class="rating"><span aria-hidden="true">★</span> {h.rating}</p>
+    </div>
+    <div class="hero-arte"><Arte nicho={i.nicho} /></div>
+  </div>
+</section>

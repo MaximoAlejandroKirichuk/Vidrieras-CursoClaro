@@ -1,0 +1,123 @@
+{
+  "source": "Current local production build of the demo pages; no mockups or generated imagery.",
+  "capturedAt": "2026-11-06T20:51:24.733Z",
+  "browser": "Chrome/156.0.8078.80",
+  "browserProtocol": "1.3",
+  "capture": {
+    "viewport": "1200x860 CSS pixels",
+    "deviceScaleFactor": 1,
+    "scroll": "0,0",
+    "readiness": "Navigation complete, document.fonts.ready and all document images completed before capture",
+    "devToolbar": "Not present in production build; no page content modified",
+    "format": "WebP, quality 82, effort 6",
+    "widths": [
+      600,
+      1200
+    ],
+    "resize": "Sharp proportional resize; original aspect ratio preserved"
+  },
+  "routes": [
+    {
+      "route": "/idiomas",
+      "captureViewport": {
+        "width": 1200,
+        "height": 860
+      },
+      "evidence": {
+        "url": "http://127.0.0.1:8765/idiomas/",
+        "title": "Alondra Idiomas · Inglés y portugués en grupos chicos · Demo",
+        "viewport": [
+          1200,
+          860
+        ],
+        "scroll": [
+          0,
+          0
+        ],
+        "images": []
+      },
+      "outputs": [
+        {
+          "file": "idiomas-600.webp",
+          "width": 600,
+          "height": 430,
+          "bytes": 16192
+        },
+        {
+          "file": "idiomas-1200.webp",
+          "width": 1200,
+          "height": 860,
+          "bytes": 43458
+        }
+      ]
+    },
+    {
+      "route": "/oficios",
+      "captureViewport": {
+        "width": 1200,
+        "height": 860
+      },
+      "evidence": {
+        "url": "http://127.0.0.1:8765/oficios/",
+        "title": "Bisagra · Escuela de oficios con salida laboral · Demo",
+        "viewport": [
+          1200,
+          860
+        ],
+        "scroll": [
+          0,
+          0
+        ],
+        "images": []
+      },
+      "outputs": [
+        {
+          "file": "oficios-600.webp",
+          "width": 600,
+          "height": 430,
+          "bytes": 19612
+        },
+        {
+          "file": "oficios-1200.webp",
+          "width": 1200,
+          "height": 860,
+          "bytes": 51866
+        }
+      ]
+    },
+    {
+      "route": "/holistico",
+      "captureViewport": {
+        "width": 1200,
+        "height": 860
+      },
+      "evidence": {
+        "url": "http://127.0.0.1:8765/holistico/",
+        "title": "Casa Sauce · Formaciones de yoga y terapias · Demo",
+        "viewport": [
+          1200,
+          860
+        ],
+        "scroll": [
+          0,
+          0
+        ],
+        "images": []
+      },
+      "outputs": [
+        {
+          "file": "holistico-600.webp",
+          "width": 600,
+          "height": 430,
+          "bytes": 14934
+        },
+        {
+          "file": "holistico-1200.webp",
+          "width": 1200,
+          "height": 860,
+          "bytes": 37946
+        }
+      ]
+    }
+  ]
+}

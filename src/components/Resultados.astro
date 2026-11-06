@@ -1,0 +1,12 @@
+---
+const { i } = Astro.props;
+const r = i.resultados;
+---
+{r && (
+<section class="seccion resultados">
+  <div class="caja">
+    <h2>{r.titulo}</h2>
+    <p class="sub">{r.bajada}</p>
+    <ul class="res-grid">{r.items.map((x: string) => <li>{x}</li>)}</ul>
+  </div>
+</section>)}

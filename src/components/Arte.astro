@@ -1,0 +1,46 @@
+---
+// Ilustraciones propias en SVG: sin fotos ni imágenes externas.
+const { nicho } = Astro.props;
+---
+{nicho === 'idiomas' && (
+<svg viewBox="0 0 480 420" role="img" aria-label="Dos globos de diálogo y un pájaro en vuelo">
+  <circle cx="330" cy="150" r="130" fill="var(--c-suave)"/>
+  <rect x="48" y="60" width="290" height="150" rx="34" fill="var(--c-primario)"/>
+  <path d="M112 210v52l62-52z" fill="var(--c-primario)"/>
+  <rect x="84" y="102" width="176" height="14" rx="7" fill="#fff" opacity=".95"/>
+  <rect x="84" y="134" width="216" height="14" rx="7" fill="#fff" opacity=".6"/>
+  <rect x="84" y="166" width="120" height="14" rx="7" fill="#fff" opacity=".6"/>
+  <rect x="196" y="238" width="244" height="126" rx="30" fill="#fff" stroke="var(--c-linea)" stroke-width="2"/>
+  <path d="M376 364v44l-54-44z" fill="#fff"/>
+  <path d="M376 364v44l-54-44" fill="none" stroke="var(--c-linea)" stroke-width="2"/>
+  <rect x="226" y="274" width="130" height="13" rx="6.5" fill="var(--c-acento)"/>
+  <rect x="226" y="304" width="178" height="13" rx="6.5" fill="var(--c-linea)"/>
+  <path d="M372 78c16-20 34-26 52-22-14 6-22 14-26 24 16-12 34-16 52-8-22 6-40 18-52 34-8-12-16-22-26-28z" fill="var(--c-acento)"/>
+</svg>)}
+{nicho === 'oficios' && (
+<svg viewBox="0 0 480 420" role="img" aria-label="Herramientas de oficio: engranaje y llave">
+  <path d="M20 410 130 120h340L360 410z" fill="var(--c-acento)"/>
+  <g transform="translate(150 150)">
+    <path d="M-16-112h32l7 34 21 8 28-20 23 23-20 28 8 21 34 7v32l-34 7-8 21 20 28-23 23-28-20-21 8-7 34h-32l-7-34-21-8-28 20-23-23 20-28-8-21-34-7V-1l34-7 8-21-20-28 23-23 28 20 21-8z" fill="#fff"/>
+    <circle r="36" fill="var(--c-fondo-osc)"/>
+  </g>
+  <g transform="translate(330 215) rotate(38)">
+    <rect x="-17" y="-96" width="34" height="218" rx="10" fill="#fff"/>
+    <path d="M-44-140c-4 28 8 46 26 52h36c18-6 30-24 26-52l-22 14v22h-44v-22z" fill="#fff"/>
+    <circle cy="104" r="9" fill="var(--c-acento)"/>
+  </g>
+  </svg>)}
+{nicho === 'holistico' && (
+<svg viewBox="0 0 480 460" role="img" aria-label="Arco con sol y ramas de sauce">
+  <path d="M60 460V220a180 180 0 0 1 360 0v240z" fill="var(--c-suave)"/>
+  <path d="M112 460V232a128 128 0 0 1 256 0v228z" fill="var(--c-primario)"/>
+  <circle cx="240" cy="214" r="62" fill="var(--c-acento)"/>
+  <path d="M112 396c62-40 192-40 256 0v64H112z" fill="var(--c-fondo-osc)"/>
+  <g fill="none" stroke="var(--c-hoja)" stroke-width="5" stroke-linecap="round">
+    <path d="M36 40c40 40 60 110 60 210"/><path d="M84 18c30 46 40 104 34 170"/><path d="M444 44c-40 40-60 110-60 210"/><path d="M396 20c-30 46-40 104-34 170"/>
+  </g>
+  <g fill="var(--c-hoja)">
+    <ellipse cx="62" cy="96" rx="7" ry="17" transform="rotate(-24 62 96)"/><ellipse cx="92" cy="168" rx="7" ry="17" transform="rotate(14 92 168)"/><ellipse cx="108" cy="90" rx="6" ry="15" transform="rotate(-12 108 90)"/>
+    <ellipse cx="418" cy="96" rx="7" ry="17" transform="rotate(24 418 96)"/><ellipse cx="388" cy="168" rx="7" ry="17" transform="rotate(-14 388 168)"/><ellipse cx="372" cy="90" rx="6" ry="15" transform="rotate(12 372 90)"/>
+  </g>
+</svg>)}

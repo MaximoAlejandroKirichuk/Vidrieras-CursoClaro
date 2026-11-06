@@ -1,0 +1,21 @@
+node_modules/
+.astro/
+dist/
+
+# Local tooling state and generated review captures.
+.atl/
+.codegraph/
+capturas/
+.impeccable/questions/
+.impeccable/live/
+.impeccable/config.local.json
+.impeccable/review/**/*.png
+.impeccable/review/**/*.json
+.claude/settings.local.json
+
+# Private environment values and machine-generated files.
+.env
+.env.*
+!.env.example
+.DS_Store
+*.log

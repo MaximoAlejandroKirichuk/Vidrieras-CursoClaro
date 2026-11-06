@@ -1,0 +1,9 @@
+---
+const { i } = Astro.props;
+---
+<section class="seccion como" id="como">
+  <div class="caja">
+    <h2>{i.como.titulo}</h2>
+    <ol class="pasos">{i.como.pasos.map((p) => <li><strong>{p.t}</strong><span>{p.d}</span></li>)}</ol>
+  </div>
+</section>

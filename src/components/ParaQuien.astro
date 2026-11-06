@@ -1,0 +1,15 @@
+---
+const { i } = Astro.props;
+const p = i.parasi;
+---
+{p && (
+<section class="seccion parasi">
+  <div class="caja">
+    <h2>{p.titulo}</h2>
+    <div class="parasi-grid">
+      <div><h3>Es para vos si…</h3><ul>{p.si.map((x) => <li>{x}</li>)}</ul></div>
+      <div><h3>No es para vos si…</h3><ul>{p.no.map((x) => <li>{x}</li>)}</ul></div>
+    </div>
+    <p class="alcance">{p.alcance}</p>
+  </div>
+</section>)}

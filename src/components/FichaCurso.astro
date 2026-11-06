@@ -1,0 +1,25 @@
+---
+import { desde, fecha, primeraCon, planes, pesos } from '../lib/precios';
+const { i, c, n } = Astro.props;
+const prox = primeraCon(i, c.id);
+const p = c.precio;
+const unPago = p.cuotas.n === 1;
+const total = planes(c).find((x) => x.id !== 'unico')?.total;
+---
+<article class="ficha" data-paso={n}>
+  {c.destacado && <p class="ficha-marca">{c.destacado}</p>}
+  <p class="ficha-etq">{c.etiqueta}</p>
+  <h3>{c.nombre}</h3>
+  <p class="ficha-res">{c.resumen}</p>
+  <ul class="ficha-datos">
+    <li>{c.duracion}</li><li>{c.modalidad}</li>{c.datos.map((d: string) => <li>{d}</li>)}
+  </ul>
+  <div class="ficha-precio">
+    <strong>{unPago ? desde(c) : `${desde(c)}`}</strong>
+    <span>{unPago ? 'pago total' : p.planes.includes('suscripcion') ? 'por mes' : `por mes · ${p.cuotas.n} cuotas`}</span>
+    {!unPago && !p.planes.includes('suscripcion') && total && <small>Total {pesos(total)}</small>}
+  </div>
+  {prox && <p class="ficha-prox">Próximo inicio: <b>{fecha(prox.inicio, false)}</b></p>}
+  <button class="btn btn-bloque" data-inscribir={prox?.id}>Inscribirme y pagar</button>
+  <details class="ficha-mas"><summary>Qué incluye</summary><ul>{c.incluye.map((x: string) => <li>{x}</li>)}</ul></details>
+</article>

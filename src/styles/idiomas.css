@@ -1,0 +1,135 @@
+html[data-nicho='idiomas'] {
+  --demo-paper: #fff;
+  --demo-ink: #142542;
+  --demo-muted: #4b5f7b;
+  --demo-accent: #1854bd;
+  --demo-accent-strong: #103e90;
+  --demo-on-accent: #fff;
+  --demo-line: #bfcee4;
+  --demo-soft: #edf3fc;
+  --demo-focus: #1854bd;
+  --demo-body: 'Figtree Variable', sans-serif;
+  --demo-display: 'Figtree Variable', sans-serif;
+  scrollbar-color: #4b5f7b #edf3fc;
+  caret-color: #1854bd;
+}
+
+.alondra-header,
+.alondra-opening { background: var(--demo-accent); color: #fff; }
+.alondra-masthead { display: flex; justify-content: space-between; align-items: center; gap: 20px; min-height: 94px; }
+.alondra-wordmark { display: flex; align-items: baseline; gap: 10px; font-size: 2.1rem; line-height: 1; font-weight: 760; letter-spacing: -.04em; text-decoration: none; }
+.alondra-wordmark span { font-size: 1rem; font-weight: 450; letter-spacing: 0; }
+.alondra-masthead nav { display: flex; flex-wrap: wrap; gap: 24px; }
+.alondra-masthead nav a { display: inline-flex; align-items: center; min-height: 44px; font-size: .95rem; text-decoration: none; }
+.alondra-masthead nav a:hover { text-decoration: underline; }
+.alondra-header :focus-visible { outline-color: #ffdf72; }
+.alondra-opening { padding-block: 12px 30px; }
+.alondra-opening h1 { margin: 0 0 8px; font-size: clamp(1.8rem, 3.3vw, 2.7rem); line-height: 1.12; letter-spacing: -.035em; font-weight: 650; }
+.alondra-opening p { margin: 0; max-width: 65ch; color: #e7efff; }
+.alondra-main section { scroll-margin-top: 24px; }
+#alondra-horarios { padding-block: 28px 0; }
+.alondra-schedule .session-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; }
+#alondra-horarios .session-heading h2 { font-size: 1.45rem; letter-spacing: -.02em; }
+#alondra-horarios .session-heading p { margin: 0; }
+#alondra-horarios .session-filters { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) auto; gap: 20px; margin-block: 20px 4px; padding: 18px 20px; background: var(--demo-soft); }
+#alondra-horarios .session-filters label { min-width: 0; font-size: .9rem; }
+#alondra-horarios .session-filters select { border-color: #8096b6; font-size: 1rem; }
+.alondra-schedule .session-count { min-width: 68px; font-size: .9rem; }
+#alondra-horarios .session-row { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.05fr) minmax(0, 1fr) auto; gap: 24px; min-height: 108px; padding: 18px 20px; }
+#alondra-horarios .session-course h3 { font-size: 1.1rem; font-weight: 700; }
+#alondra-horarios .session-meta strong { font-size: 1rem; font-weight: 600; }
+#alondra-horarios .session-meta span { color: var(--demo-ink); font-size: 1.15rem; font-weight: 550; font-variant-numeric: tabular-nums; }
+#alondra-horarios .session-date time { font-size: .9rem; }
+#alondra-horarios .session-date span { margin-top: 4px; }
+#alondra-horarios .session-enroll { grid-template-columns: auto auto; align-items: center; gap: 20px; }
+#alondra-horarios .session-enroll > span { font-size: 1.1rem; white-space: nowrap; }
+#alondra-horarios .session-enroll small { display: block; text-align: right; }
+#alondra-horarios .session-enroll .demo-button { min-height: 48px; }
+.alondra-levels { border-block: 1px solid var(--demo-line); }
+.alondra-levels > summary { width: fit-content; min-height: 48px; margin-block: 16px; padding: 11px 16px; background: #ffdf72; color: var(--demo-ink); border-radius: 4px; font-weight: 650; }
+.alondra-level-content { padding: 0 20px 24px; }
+.alondra-level-content > p { max-width: 65ch; color: var(--demo-muted); }
+.alondra-level-content ul { list-style: none; margin: 0; padding: 0; }
+.alondra-level-content li + li { border-top: 1px solid var(--demo-line); }
+.alondra-level-content a { display: grid; grid-template-columns: 48px 1fr auto; gap: 16px; align-items: center; padding-block: 16px; text-decoration: none; }
+.alondra-level-content a:hover strong,
+.alondra-level-content a:hover .alondra-level-action { text-decoration: underline; }
+.alondra-level-code { font-size: 1.5rem; font-weight: 700; color: var(--demo-accent); }
+.alondra-level-content strong { display: block; font-weight: 600; }
+.alondra-level-content strong + span { display: block; color: var(--demo-muted); font-size: .9rem; }
+.alondra-level-action { color: var(--demo-accent); font-size: .9rem; font-weight: 600; }
+.alondra-catalog { margin-top: 64px; padding-block: 48px; background: var(--demo-soft); }
+.alondra-reading-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: clamp(32px, 6vw, 88px); }
+.alondra-section-intro h2 { margin: 0 0 16px; font-size: clamp(1.65rem, 2.5vw, 2rem); font-weight: 650; letter-spacing: -.025em; line-height: 1.15; }
+.alondra-section-intro p { color: var(--demo-muted); max-width: 40ch; }
+.alondra-course { border-bottom: 1px solid var(--demo-line); }
+.alondra-course:first-child { border-top: 1px solid var(--demo-line); }
+.alondra-course summary { display: list-item; position: relative; min-height: 94px; padding: 20px 155px 20px 0; margin-left: 20px; }
+.alondra-course summary::marker { color: var(--demo-accent); }
+.alondra-course summary strong { font-size: 1.15rem; font-weight: 650; }
+.alondra-course summary > span > span { display: block; color: var(--demo-muted); font-size: .9rem; }
+.alondra-course-price { position: absolute; right: 0; top: 20px; font-size: 1.15rem; font-weight: 650; text-align: right; font-variant-numeric: tabular-nums; }
+.alondra-course-price small { display: block; color: var(--demo-muted); font-size: .8rem; font-weight: 400; }
+.alondra-course-content { max-width: 65ch; padding: 4px 0 24px 20px; }
+.alondra-course-content dl { display: flex; flex-wrap: wrap; gap: 16px 32px; margin-block: 20px; }
+.alondra-course-content dt { color: var(--demo-muted); font-size: .85rem; }
+.alondra-course-content dd { margin: 0; font-weight: 550; }
+.alondra-course-content ul { padding-left: 20px; margin-block: 16px; }
+.alondra-course-content li { margin-block: 4px; }
+.alondra-questions { padding-block: 56px 8px; }
+.alondra-faq.demo-faq { margin-top: 0; }
+.alondra-faq details:last-child { border-bottom: 1px solid var(--demo-line); }
+.alondra-faq summary { padding-block: 18px; }
+.alondra-faq details p { padding-right: 16px; }
+
+@media (max-width: 1080px) {
+  #alondra-horarios .session-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; gap: 12px 20px; }
+  .alondra-schedule .session-course { grid-column: 1; grid-row: 1; }
+  #alondra-horarios .session-meta { grid-column: 2; grid-row: 1; }
+  #alondra-horarios .session-date { grid-column: 1 / 3; grid-row: 2; display: flex; flex-wrap: wrap; gap: 4px 20px; }
+  #alondra-horarios .session-date span { margin: 0; }
+  #alondra-horarios .session-enroll { grid-column: 3; grid-row: 1 / 3; grid-template-columns: 1fr; gap: 8px; }
+}
+
+@media (max-width: 760px) {
+  .alondra-masthead { min-height: 80px; gap: 12px; }
+  .alondra-wordmark { display: block; font-size: 1.85rem; }
+  .alondra-wordmark span { display: block; margin-top: 4px; font-size: .85rem; }
+  .alondra-masthead nav { gap: 16px; }
+  .alondra-masthead nav a { font-size: .85rem; }
+  .alondra-opening { padding-block: 12px 24px; }
+  .alondra-opening p { font-size: .95rem; }
+  #alondra-horarios { padding-top: 24px; }
+  .alondra-schedule .session-heading { gap: 6px; }
+  #alondra-horarios .session-filters { grid-template-columns: minmax(0, 1.6fr) minmax(76px, 1fr); gap: 12px; padding: 14px; margin-top: 16px; }
+  #alondra-horarios .session-count { grid-column: 1 / -1; padding: 0; }
+  #alondra-horarios .session-row { padding-inline: 0; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 16px; }
+  #alondra-horarios .session-meta { grid-column: 1; grid-row: 2; }
+  #alondra-horarios .session-date { grid-column: 1; grid-row: 3; display: block; }
+  #alondra-horarios .session-date span { margin-top: 4px; }
+  #alondra-horarios .session-enroll { grid-column: 2; grid-row: 1 / 4; }
+  .alondra-catalog { margin-top: 40px; padding-block: 32px; }
+  .alondra-reading-layout { grid-template-columns: 1fr; gap: 24px; }
+  .alondra-section-intro p { max-width: 65ch; }
+  .alondra-section-intro .demo-link { margin-top: -8px; }
+  .alondra-questions { padding-top: 40px; }
+  .alondra-level-content { padding-inline: 0; }
+}
+
+@media (max-width: 480px) {
+  .alondra-masthead { flex-wrap: wrap; padding-block: 16px 8px; gap: 8px 16px; }
+  .alondra-wordmark { display: flex; }
+  .alondra-wordmark span { margin-top: 0; }
+  .alondra-masthead nav { width: 100%; gap: 24px; }
+  .alondra-masthead nav a { min-height: 36px; }
+  .alondra-opening h1 { max-width: 16ch; }
+  #alondra-horarios .session-row { grid-template-columns: minmax(0, 1fr); gap: 8px; padding-block: 20px; }
+  #alondra-horarios .session-enroll { grid-column: 1; grid-row: 4; display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 6px; }
+  #alondra-horarios .session-enroll small { display: inline; text-align: left; }
+  #alondra-horarios .session-enroll .demo-button { white-space: normal; padding-inline: 14px; }
+  .alondra-level-content a { grid-template-columns: 36px minmax(0, 1fr); gap: 12px; }
+  .alondra-level-action { grid-column: 2; }
+  .alondra-course summary { padding-right: 0; }
+  .alondra-course-price { position: static; display: block; margin-top: 10px; text-align: left; }
+  .alondra-course-price small { display: inline; margin-left: 6px; }
+}

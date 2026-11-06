@@ -1,0 +1,12 @@
+---
+import Marca from './Marca.astro';
+const { i } = Astro.props;
+---
+<p class="barra">{i.barra}</p>
+<header class="cab">
+  <div class="caja cab-in">
+    <Marca i={i} />
+    <nav aria-label="Secciones">{i.nav.map((n) => <a href={n.href}>{n.texto}</a>)}</nav>
+    <a class="btn btn-chico" href="#fechas">Inscribirme</a>
+  </div>
+</header>

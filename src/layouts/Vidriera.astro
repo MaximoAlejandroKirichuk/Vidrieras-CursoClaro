@@ -1,0 +1,36 @@
+---
+import '../styles/demo-base.css';
+import Checkout from '../components/Checkout.astro';
+import type { Instituto } from '../data/tipos';
+
+const { i } = Astro.props as { i: Instituto };
+---
+<!doctype html>
+<html lang="es-AR" data-nicho={i.nicho}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{i.titulo} · Demo</title>
+    <meta name="description" content={i.descripcion} />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="demo-skip" href="#contenido">Saltar al contenido</a>
+    <div class="demo-notice">
+      <div class="demo-wrap">
+        <p><strong>Demo de CursoClaro.</strong> Instituto y datos ficticios. Inscripción y pago simulados.</p>
+        <a href="/">Ver otros ejemplos</a>
+      </div>
+    </div>
+    <slot />
+    <footer class="demo-footer">
+      <div class="demo-wrap">
+        <p><strong>{i.nombreCorto}</strong><span>Un ejemplo de experiencia para institutos, por CursoClaro.</span></p>
+        <p>Esta demo no cobra, no guarda inscripciones y no envía mensajes. Usá los datos de ejemplo al probarla.</p>
+        <a href="/">Volver a los ejemplos</a>
+      </div>
+    </footer>
+    <Checkout i={i} />
+  </body>
+</html>

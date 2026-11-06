@@ -1,0 +1,118 @@
+---
+import Vidriera from '../layouts/Vidriera.astro';
+import SessionPicker from '../components/SessionPicker.astro';
+import { holistico } from '../data/holistico';
+import { fecha, planes, pesos, primeraCon } from '../lib/precios';
+import '@fontsource-variable/karla';
+import '@fontsource-variable/lora';
+import '../styles/holistico.css';
+
+const i = holistico;
+const training = i.catalogo.cursos.find((course) => course.id === 'profesorado')!;
+const nextEdition = primeraCon(i, training.id)!;
+const installmentPlan = planes(training).find((plan) => plan.id === 'cuotas')!;
+const relatedCourses = i.catalogo.cursos.filter((course) => course.id !== training.id);
+---
+<Vidriera i={i}>
+  <header class="sauce-header demo-wrap">
+    <a class="sauce-brand" href="/holistico">
+      <span>{i.nombreCorto}</span>
+      <span>Escuela de Yoga y Terapias</span>
+    </a>
+    <nav aria-label="Navegación de Casa Sauce">
+      <a href="#formacion">La formación</a>
+      <a href="#fechas" data-select-course={training.id}>Ediciones</a>
+      <a href="#otras-formaciones">Otros recorridos</a>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <section class="sauce-invitation" aria-labelledby="training-title">
+      <div class="demo-wrap">
+        <h1 id="training-title">{training.nombre}</h1>
+        <p class="sauce-intro">{training.resumen}</p>
+        <dl class="sauce-training-facts">
+          <div><dt>Formación</dt><dd>{training.duracion}</dd></div>
+          <div><dt>Encuentros</dt><dd>{training.datos[0]}</dd></div>
+          <div><dt>Modalidad</dt><dd>{training.modalidad}</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <div class="sauce-next-edition">
+      <div class="demo-wrap sauce-edition-strip">
+        <div>
+          <strong>{training.destacado} · {fecha(nextEdition.inicio, false)} de {nextEdition.inicio.slice(0, 4)}</strong>
+          <span>{training.precio.cuotas.n} cuotas de {pesos(training.precio.cuotas.monto)} · Total {pesos(installmentPlan.total)}</span>
+        </div>
+        <div class="sauce-edition-actions">
+          <button class="demo-button" data-inscribir={nextEdition.id}>Reservar en sede</button>
+          <a class="demo-link" href="#fechas" data-select-course={training.id}>Comparar modalidades</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="sauce-editions demo-wrap">
+      <SessionPicker i={i} initialCourse={training.id} showGroupFilter={false} title="Elegí tu próxima edición" />
+      <p class="sauce-payment-note">Podés explorar los planes y probar la reserva con datos de ejemplo. Los pagos y las cuotas programadas son una simulación: no se realizan cobros ni inscripciones reales.</p>
+    </div>
+
+    <section class="sauce-program demo-wrap" id="formacion" aria-labelledby="program-title">
+      <div class="sauce-program-intro">
+        <h2 id="program-title">Tiempo para aprender.<br />Espacio para practicar.</h2>
+        <p>{training.resumen} Un recorrido de diez meses con {training.datos[1].toLocaleLowerCase('es-AR')}.</p>
+        <p>Para quienes quieren profundizar su práctica, enseñar o sumar el yoga a su trabajo. Para el profesorado, recomendamos un año de práctica previa.</p>
+      </div>
+      <div class="sauce-materials">
+        <h3>Durante la formación</h3>
+        <ul>{training.incluye.map((item) => <li>{item}</li>)}</ul>
+        <div class="sauce-qualification">
+          <h3>El alcance del diploma</h3>
+          <p>{i.parasi.alcance}</p>
+          <p>No es un título oficial ni habilita a tratar dolencias.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sauce-related" id="otras-formaciones" aria-labelledby="related-title">
+      <div class="demo-wrap sauce-related-layout">
+        <div class="sauce-related-intro">
+          <h2 id="related-title">Otros recorridos<br />en Casa Sauce</h2>
+          <p>Iniciaciones, instructorados y especializaciones. Cada formación tiene sus propios encuentros y requisitos.</p>
+        </div>
+        <div class="sauce-course-list">
+          {relatedCourses.map((course) => <details class="sauce-course">
+            <summary>
+              <span class="sauce-course-name">{course.nombre}</span>
+              <span class="sauce-course-duration">{course.duracion}</span>
+            </summary>
+            <div class="sauce-course-content">
+              <p>{course.resumen}</p>
+              <p class="sauce-course-facts">{course.modalidad}. {course.datos.join('. ')}.</p>
+              <a class="demo-link" href="#fechas" data-select-course={course.id}>Ver ediciones de {course.nombre}</a>
+            </div>
+          </details>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="sauce-questions demo-wrap" id="faq" aria-labelledby="questions-title">
+      <div>
+        <h2 id="questions-title">Antes de empezar</h2>
+        <p>Sobre la práctica, el diploma y la continuidad de tu formación.</p>
+        <p class="sauce-policy-note">Las respuestas describen las condiciones del instituto ficticio. Esta demo no envía mensajes ni genera enlaces de pago reales.</p>
+      </div>
+      <div class="sauce-faq-list">
+        {i.faq.map((item) => <details>
+          <summary>{item.p}</summary>
+          <p>{item.r}</p>
+        </details>)}
+      </div>
+    </section>
+
+    <div class="sauce-close demo-wrap">
+      <p>Profesorado de Yoga.<br /><span>La próxima edición empieza el {fecha(nextEdition.inicio, false)}.</span></p>
+      <a class="demo-button" href="#fechas" data-select-course={training.id}>Volver a las ediciones</a>
+    </div>
+  </main>
+</Vidriera>

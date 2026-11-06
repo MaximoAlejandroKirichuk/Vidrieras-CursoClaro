@@ -1,0 +1,9 @@
+---
+const { i } = Astro.props;
+---
+<section class="seccion faq" id="faq">
+  <div class="caja caja-angosta">
+    <h2>Preguntas frecuentes</h2>
+    {i.faq.map((f) => <details><summary>{f.p}</summary><p>{f.r}</p></details>)}
+  </div>
+</section>

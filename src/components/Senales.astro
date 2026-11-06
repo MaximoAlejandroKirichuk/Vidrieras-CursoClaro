@@ -1,0 +1,9 @@
+---
+const { i } = Astro.props;
+---
+{i.senales.length > 0 && (
+<section class="senales" aria-label="Datos de la escuela">
+  <ul class="caja senales-in">
+    {i.senales.map((s) => <li><strong>{s.valor}</strong><span>{s.rotulo}</span></li>)}
+  </ul>
+</section>)}
