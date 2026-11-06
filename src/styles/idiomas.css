@@ -1,17 +1,19 @@
 html[data-nicho='idiomas'] {
   --demo-paper: #fff;
-  --demo-ink: #142542;
-  --demo-muted: #4b5f7b;
-  --demo-accent: #1854bd;
-  --demo-accent-strong: #103e90;
+  --demo-ink: #263a36;
+  --demo-muted: #526761;
+  --demo-accent: #245c52;
+  --demo-accent-strong: #19473f;
   --demo-on-accent: #fff;
-  --demo-line: #bfcee4;
-  --demo-soft: #edf3fc;
-  --demo-focus: #1854bd;
+  --demo-line: #c9d8d1;
+  --demo-soft: #eef4f1;
+  --demo-focus: #245c52;
+  --alondra-level: #e6c873;
   --demo-body: 'Figtree Variable', sans-serif;
   --demo-display: 'Figtree Variable', sans-serif;
-  scrollbar-color: #4b5f7b #edf3fc;
-  caret-color: #1854bd;
+  scrollbar-color: #526761 #eef4f1;
+  accent-color: #245c52;
+  caret-color: #245c52;
 }
 
 .alondra-header,
@@ -22,7 +24,7 @@ html[data-nicho='idiomas'] {
 .alondra-masthead nav { display: flex; flex-wrap: wrap; gap: 24px; }
 .alondra-masthead nav a { display: inline-flex; align-items: center; min-height: 44px; font-size: .95rem; text-decoration: none; }
 .alondra-masthead nav a:hover { text-decoration: underline; }
-.alondra-header :focus-visible { outline-color: #ffdf72; }
+.alondra-header :focus-visible { outline-color: var(--alondra-level); }
 .alondra-opening { padding-block: 12px 30px; }
 .alondra-opening h1 { margin: 0 0 8px; font-size: clamp(1.8rem, 3.3vw, 2.7rem); line-height: 1.12; letter-spacing: -.035em; font-weight: 650; }
 .alondra-opening p { margin: 0; max-width: 65ch; color: #e7efff; }
@@ -46,7 +48,10 @@ html[data-nicho='idiomas'] {
 #alondra-horarios .session-enroll small { display: block; text-align: right; }
 #alondra-horarios .session-enroll .demo-button { min-height: 48px; }
 .alondra-levels { border-block: 1px solid var(--demo-line); }
-.alondra-levels > summary { width: fit-content; min-height: 48px; margin-block: 16px; padding: 11px 16px; background: #ffdf72; color: var(--demo-ink); border-radius: 4px; font-weight: 650; }
+.alondra-levels > summary { width: fit-content; min-height: 48px; margin-block: 16px; padding: 11px 16px; background: var(--alondra-level); color: var(--demo-ink); border-radius: 4px; font-weight: 650; }
+html[data-nicho='idiomas'] .demo-button:disabled,
+html[data-nicho='idiomas'] .cc .btn:disabled,
+html[data-nicho='idiomas'] .mp-btn:disabled { background: #e3ebe7; border-color: var(--demo-line); color: var(--demo-muted); opacity: 1; }
 .alondra-level-content { padding: 0 20px 24px; }
 .alondra-level-content > p { max-width: 65ch; color: var(--demo-muted); }
 .alondra-level-content ul { list-style: none; margin: 0; padding: 0; }
