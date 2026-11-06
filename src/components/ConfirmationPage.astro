@@ -1,0 +1,21 @@
+---
+import Funnel from '../layouts/Funnel.astro';
+import FunnelClient from './FunnelClient.astro';
+import type { Instituto, Curso } from '../data/tipos';
+import { coursePath } from '../lib/funnel';
+const { i, c } = Astro.props as { i: Instituto; c: Curso };
+---
+<Funnel i={i} title="Confirmación de ejemplo" course={c.id} step={4}>
+  <main id="contenido" class="demo-wrap f-confirmation">
+    <section data-no-receipt class="f-empty"><h1>Todavía no hay un pago simulado</h1><p>Completá la inscripción para ver el resumen de tu curso.</p><a class="demo-button" href={`${coursePath(i,c)}pago/`}>Ir a la inscripción</a></section>
+    <section data-receipt hidden>
+      <div class="f-success-mark" aria-hidden="true"><svg viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2"><path d="m7 17 6 6L26 9" /></svg></div>
+      <h1>Tu inscripción de ejemplo está confirmada.</h1><p class="f-lead">{c.nombre}</p><p>No se realizó ningún cobro ni se reservó un lugar real.</p>
+      <div class="f-receipt"><h2>Todo lo que necesitás para empezar</h2><dl><div><dt>Comisión e inicio</dt><dd data-session-summary></dd></div><div><dt>Pago simulado</dt><dd data-today></dd></div><div><dt>Plan elegido</dt><dd data-plan-name></dd></div><div><dt>Próximo pago de ejemplo</dt><dd data-next-payment></dd></div></dl><p data-total></p><p data-balance></p><details><summary>Ver calendario completo</summary><ol class="f-schedule" data-schedule></ol></details></div>
+      <div class="f-confirm-actions"><button class="demo-button" data-whatsapp>Consultar por WhatsApp · demo</button><a class="demo-link" href={`/${i.nicho}/`}>Volver a la tienda</a></div><p role="status" data-contact-status></p>
+      <details class="f-email"><summary>Ver email de confirmación de ejemplo</summary><p><strong>Asunto:</strong> Tu inscripción en {c.nombre}</p><p>Hola, Valentina. Este es un ejemplo del resumen de tu inscripción.</p><p data-email-summary></p><p><strong>Vista previa: este email no se envió.</strong></p></details>
+    </section>
+    <noscript><p>Activá JavaScript para ver el resumen de la simulación.</p></noscript>
+  </main>
+  <FunnelClient i={i} c={c} />
+</Funnel>

@@ -1,0 +1,53 @@
+---
+import type { Instituto } from '../data/tipos';
+import '../styles/demo-base.css';
+import '../styles/idiomas.css';
+import '../styles/oficios.css';
+import '../styles/holistico.css';
+import '../styles/funnel.css';
+import '@fontsource-variable/figtree';
+import '@fontsource/barlow/400.css';
+import '@fontsource/barlow/600.css';
+import '@fontsource/barlow-condensed/700.css';
+import '@fontsource-variable/karla';
+import '@fontsource-variable/lora';
+interface Props { i: Instituto; title: string; step: number; course?: string }
+const { i, title, step, course = '' } = Astro.props;
+---
+<!doctype html>
+<html lang="es-AR" data-nicho={i.nicho}>
+  <head>
+    <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} · {i.nombreCorto} · Demo</title>
+    <meta name="description" content={`${title}. Consultá fechas, contenido y formas de pago.`} />
+    <meta name="robots" content="noindex" /><link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body class="funnel" data-institute={i.nicho} data-course-id={course} data-step={step}>
+    <a class="demo-skip" href="#contenido">Saltar al contenido</a>
+    <div class="demo-notice"><div class="demo-wrap"><p><strong>Demo de CursoClaro.</strong> Instituto ficticio. No se realizan cobros ni se envían datos.</p><a href="/">Otros ejemplos</a></div></div>
+    <header class="f-header demo-wrap">
+      <a class="f-brand" href={`/${i.nicho}/`}>{i.nombreCorto}<span>{i.nicho === 'idiomas' ? 'Idiomas' : i.nicho === 'oficios' ? 'Escuela de Oficios' : 'Yoga y Terapias'}</span></a>
+      <span class="f-header-note">{step === 1 ? 'Encontrá tu próximo curso' : step === 2 ? 'Tu próxima formación' : 'Inscripción de ejemplo'}</span>
+    </header>
+    <nav class="f-progress demo-wrap" aria-label="Recorrido de inscripción"><ol>{['Tienda', 'Curso', 'Pago', 'Confirmación'].map((label, index) => <li aria-current={step === index + 1 ? 'step' : undefined}><span>{index + 1}</span>{label}</li>)}</ol></nav>
+    <slot />
+    <footer class="demo-footer"><div class="demo-wrap"><p><strong>{i.nombre}</strong>Instituto ficticio de demostración.</p><p>Los precios, fechas y cupos son datos de ejemplo. No se guardan inscripciones ni se envían mensajes.</p><a href={`/${i.nicho}/`}>Ver todos los cursos</a></div></footer>
+    <script is:inline>
+      (() => {
+        const context = { institute: document.body.dataset.institute, course: document.body.dataset.courseId };
+        window.funnelEvents = [];
+        window.trackFunnel = (event, course = context.course) => {
+          const detail = { event, ...context, course };
+          window.funnelEvents.push(detail);
+          if (window.funnelEvents.length > 100) window.funnelEvents.shift();
+          window.dispatchEvent(new CustomEvent('funnel:measurement', { detail }));
+        };
+        if (document.body.dataset.step === '2') window.trackFunnel('course_view');
+        document.addEventListener('click', e => {
+          const link = e.target.closest('[data-track]');
+          if (link) window.trackFunnel(link.dataset.track, link.dataset.courseId || context.course);
+        });
+      })();
+    </script>
+  </body>
+</html>

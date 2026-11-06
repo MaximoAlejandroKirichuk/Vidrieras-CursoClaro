@@ -15,15 +15,15 @@ colors:
   gallery-bisagra-accent: "#a63b04"
   gallery-sauce-accent: "#854029"
   alondra-paper: "#fff"
-  alondra-ink: "#142542"
-  alondra-muted: "#4b5f7b"
-  alondra-cobalt: "#1854bd"
-  alondra-cobalt-strong: "#103e90"
-  alondra-line: "#bfcee4"
-  alondra-soft: "#edf3fc"
-  alondra-opening-blue: "#1854bd"
-  alondra-level-yellow: "#ffdf72"
-  alondra-focus-yellow: "#ffdf72"
+  alondra-ink: "#263a36"
+  alondra-muted: "#526761"
+  alondra-jade: "#245c52"
+  alondra-jade-strong: "#19473f"
+  alondra-line: "#c9d8d1"
+  alondra-soft: "#eef4f1"
+  alondra-opening-jade: "#245c52"
+  alondra-header-focus-brass: "#e6c873"
+  alondra-focus-jade: "#245c52"
   bisagra-paper: "#fff"
   bisagra-ink: "#241f1b"
   bisagra-muted: "#62584f"
@@ -147,6 +147,12 @@ components:
 
 ## Overview
 
+### Active funnel direction (November 2026)
+
+The user approved replacing the three independent storefront compositions with four shared sales pages: store, course, payment and confirmation. `src/layouts/Funnel.astro`, `src/components/Storefront.astro`, the three `*Page.astro` components and `src/styles/funnel.css` are the active composition authority. The historical route-specific composition descriptions below document the previous implementation, not constraints on this flow.
+
+Preserve the existing institute palettes and fonts, including Alondra's jade edits. Shared ruled catalog rows lead to standalone course pages. Course titles and offer details sit beside a colored booking summary; on mobile the enrollment action stays at the bottom of the viewport. Payment uses native form controls and a live price/calendar summary. Confirmation presents an explicitly simulated receipt. Native course/group filters remain in the store. No testimonials, teacher credentials, imagery or results are fabricated. The old modal checkout is no longer mounted on the active routes.
+
 **Creative North Star: "Three Institute Worlds, One Honest Frame"**
 
 CursoClaro is a work-first collection, not one universal storefront theme. Its homepage uses a restrained white, navy, cobalt, and Figtree gallery frame to introduce three fictional demonstrations. Each route then owns its own typography, palette, and composition: Alondra Idiomas is a cobalt timetable-first language school; Bisagra is an orange-and-yellow practical-trades course sheet; Casa Sauce is a plum-and-olive principal training edition. Do not flatten these identities into a shared marketing-page template.
@@ -162,19 +168,19 @@ The routes share useful behavior and infrastructure: the demo shell, accessible 
 
 ## Colors
 
-The homepage uses a cool gallery palette; each demo has its own scoped accents and surfaces, defined by its route stylesheet rather than a shared global color identity.
+The homepage uses a cool gallery palette; each demo has its own scoped accents and surfaces, defined by its route stylesheet rather than a shared global color identity. Alondra's palette is a clear-paper, deep-jade and quiet brass system: botanical in character without resorting to the familiar cream-and-terracotta treatment.
 
 The homepage preview frames retain their original pale blue and sand grounds. They are collection-context tokens, not the new institute palettes; the actual screenshot inside each frame carries the current demo's colors.
 
 ### Primary
 - **Gallery Cobalt** and **Deep Cobalt**: homepage links, focus, and project actions.
-- **Alondra Cobalt**: language-school masthead/opening, links, selection, and actions; yellow marks the level disclosure and header focus.
+- **Alondra Jade** and **Deep Jade**: language-school masthead/opening, links, selection, actions, and keyboard focus; **Quiet Brass** marks the level disclosure and masthead focus.
 - **Bisagra Burnt Orange**: actions and practical course details; **Workshop Orange** and **Tool Yellow** distinguish the intensive and reservation strip.
 - **Sauce Olive**: course/action accent; **Training Plum** anchors the invitation panel, with plum also used for focus.
 
 ### Neutral
 - **Gallery White**, **Gallery Navy**, **Muted Slate**, **Pale Divider**, and **Pale Blue Tint** belong to the homepage frame.
-- **Alondra Paper**, ink, muted blue-grey, pale blue lines, and soft blue surfaces support its timetable and catalog.
+- **Alondra Paper**, green-charcoal ink, muted botanical text, soft sage lines, and pale green-grey surfaces support its timetable and catalog.
 - **Bisagra Paper**, near-black brown ink, warm muted text, warm rules, and stone surfaces support the course-sheet reading rhythm.
 - **Sauce Paper**, charcoal-plum ink, muted text, warm rules, and soft olive surfaces support the training edition.
 

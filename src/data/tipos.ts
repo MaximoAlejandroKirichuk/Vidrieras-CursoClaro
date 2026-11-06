@@ -18,6 +18,10 @@ export interface Precio {
 }
 
 export interface Curso {
+  cerrado?: boolean;
+  publico?: string;
+  temario?: string[];
+  docente?: { nombre: string; bio: string };
   id: string;
   nombre: string;
   etiqueta: string;

@@ -1,6 +1,7 @@
 ---
 import type { Instituto } from '../data/tipos';
 import { estado, fecha, planes, pesos } from '../lib/precios';
+import { coursePath, referenceDate } from '../lib/funnel';
 
 interface Props {
   i: Instituto;
@@ -10,9 +11,10 @@ interface Props {
   initialGroup?: string;
   showCourseFilter?: boolean;
   showGroupFilter?: boolean;
+  funnel?: boolean;
 }
 
-const { i, id = 'fechas', title = i.fechas.titulo, initialCourse = 'todos', initialGroup = 'todos', showCourseFilter = true, showGroupFilter = true } = Astro.props;
+const { i, id = 'fechas', title = i.fechas.titulo, initialCourse = 'todos', initialGroup = 'todos', showCourseFilter = true, showGroupFilter = true, funnel = false } = Astro.props;
 const groups = [...new Set(i.fechas.comisiones.map((session) => session.grupo))];
 const sessions = [...i.fechas.comisiones].sort((a, b) => a.inicio.localeCompare(b.inicio));
 const matches = (session: typeof sessions[number]) => (initialCourse === 'todos' || session.cursoId === initialCourse) && (initialGroup === 'todos' || session.grupo === initialGroup);
@@ -47,7 +49,7 @@ const count = sessions.filter(matches).length;
         <div class="session-course"><h3>{session.titulo}</h3><span>{session.sede}</span></div>
         <div class="session-meta"><strong>{session.dias}</strong><span>{session.horario}</span></div>
         <div class="session-date"><time datetime={session.inicio}>Desde el {fecha(session.inicio, false)}</time><span>{session.cupos > 0 ? `${session.cupos} lugares` : availability.texto}</span></div>
-        <div class="session-enroll"><span>{pesos(price)} <small>hoy</small></span><button class="demo-button" data-inscribir={session.id} disabled={session.cupos === 0} aria-label={`${session.cupos > 0 ? 'Elegir grupo de' : 'Sin lugares en'} ${session.titulo}, ${session.dias}, ${session.horario}, ${session.sede}`}>{session.cupos > 0 ? 'Elegir grupo' : 'Sin lugares'}</button></div>
+        <div class="session-enroll"><span>{pesos(price)} <small>hoy</small></span>{funnel ? <a class="demo-button" data-track="course_click" data-course-id={course.id} href={`${coursePath(i, course)}?comision=${session.id}${session.cupos === 0 || session.inicio < referenceDate || course.cerrado ? '#proxima-fecha' : ''}`}>Ver curso</a> : <button class="demo-button" data-inscribir={session.id} disabled={session.cupos === 0} aria-label={`${session.cupos > 0 ? 'Elegir grupo de' : 'Sin lugares en'} ${session.titulo}, ${session.dias}, ${session.horario}, ${session.sede}`}>{session.cupos > 0 ? 'Elegir grupo' : 'Sin lugares'}</button>}</div>
       </li>;
     })}
   </ul>

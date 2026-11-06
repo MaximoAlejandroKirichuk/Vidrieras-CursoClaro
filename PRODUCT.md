@@ -14,7 +14,7 @@ Institutes exploring examples of what they could have built. The creator also us
 
 A collection of working references that showcases the creator's work and lets an institute explore a simulation of a possible product. Visitors should be able to see both what an example looks like and how its demonstrated interactions work.
 
-This collection is not a single generic product or a universal template. The current examples are institute storefronts; they do not define or exhaust the possible future product offering.
+The current institute examples share a reusable four-page sales flow: storefront, standalone course, payment, and confirmation. Structure and action placement stay consistent; institute branding and course content vary. The collection itself remains separate from these storefronts and does not define or exhaust future product offerings.
 
 ## Operating Context
 

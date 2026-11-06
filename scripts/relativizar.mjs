@@ -16,7 +16,7 @@ for (const f of archivos(dist)) {
     let t = readFileSync(f, 'utf8');
     t = t.replace(/(href|src)="\/_astro\//g, `$1="${up}_astro/`)
       .replace(/href="\/favicon\.svg"/g, `href="${up}favicon.svg"`)
-      .replace(/href="\/(idiomas|oficios|holistico)\/?"/g, `href="${up}$1/index.html"`)
+      .replace(/href="\/(idiomas|oficios|holistico)([^"?#]*)([?#][^"]*)?"/g, (_, institute, route, query = '') => `href="${up}${institute}${route.replace(/\/$/, '')}/index.html${query}"`)
       .replace(/href="\/"/g, `href="${up}index.html"`);
     writeFileSync(f, t);
   }

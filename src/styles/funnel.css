@@ -1,0 +1,139 @@
+.funnel { overflow-wrap: anywhere; }
+.funnel h1, .funnel h2 { font-family: var(--demo-display); }
+.funnel h1 { font-size: clamp(2.4rem, 4.8vw, 4.5rem); line-height: 1.06; font-weight: 650; letter-spacing: -.035em; margin: 0 0 24px; }
+.funnel h2 { font-size: clamp(1.5rem, 2.2vw, 2rem); line-height: 1.2; font-weight: 600; margin: 0 0 20px; }
+.funnel h3 { font-size: 1.1rem; line-height: 1.35; margin: 0 0 12px; }
+.funnel p { max-width: 68ch; }
+.f-header { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-block: 24px; }
+.f-brand { font: 700 2rem/1.1 var(--demo-display); text-decoration: none; letter-spacing: -.03em; }
+.f-brand span { display: block; font: 400 .9rem/1.5 var(--demo-body); letter-spacing: 0; margin-top: 5px; }
+.f-header-note, .f-muted, .f-fine { color: var(--demo-muted); }
+.f-fine { font-size: .88rem; line-height: 1.55; }
+.f-progress ol { display: flex; flex-wrap: wrap; padding: 0; margin: 0; list-style: none; border-block: 1px solid var(--demo-line); }
+/* min-width and overflow-wrap keep each step whole: .funnel sets overflow-wrap:anywhere,
+   which otherwise removes the min-content floor and lets flex:1 break a label mid-word. */
+.f-progress li { flex: 1; min-width: max-content; overflow-wrap: normal; display: flex; gap: 10px; align-items: center; padding: 14px 10px; font-size: .9rem; color: var(--demo-muted); }
+.f-progress li[aria-current] { color: var(--demo-accent); box-shadow: inset 0 -3px var(--demo-accent); font-weight: 700; }
+.f-progress li span { font-variant-numeric: tabular-nums; }
+.f-store-intro { display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: end; padding-block: 56px 40px; }
+.f-store-intro h1 { margin: 0; }
+.f-store-intro p { font-size: 1.1rem; }
+.f-course-row { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 56px; padding-block: 32px; border-top: 1px solid var(--demo-line); }
+.f-course-row h2 { margin-bottom: 12px; }
+.f-course-row h2 a { text-decoration: none; }
+.f-course-row h2 a:hover { text-decoration: underline; }
+.f-row-price { display: grid; align-content: start; gap: 8px; }
+.f-row-price strong { font-size: 1.2rem; font-variant-numeric: tabular-nums; }
+.f-row-price > span { color: var(--demo-muted); font-size: .9rem; }
+.f-row-price .demo-button { margin-top: 8px; }
+.f-section { margin-block: 48px; }
+.f-level-help { border-block: 1px solid var(--demo-line); margin-top: 24px; padding: 16px 0; }
+.f-level-help li { margin-block: 16px; }
+.f-back { display: inline-flex; align-items: center; min-height: 48px; margin-block: 16px 24px; font-size: .9rem; }
+.f-offer { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(300px, 1fr); gap: 64px; padding-block: 8px 40px; border-bottom: 1px solid var(--demo-line); }
+.f-offer-copy { padding-block: 20px; }
+.f-lead { font-size: 1.3rem; line-height: 1.55; }
+.f-audience { color: var(--demo-accent-strong); font-weight: 600; }
+.f-facts { display: flex; gap: 40px; margin: 32px 0 0; }
+.f-facts dt { font-size: .9rem; color: var(--demo-muted); }
+.f-facts dd { margin: 6px 0 0; font-weight: 600; }
+.f-booking { background: var(--demo-accent); color: var(--demo-on-accent, #fff); padding: 32px; align-self: start; }
+.f-booking h2 { font: 500 1rem/1.4 var(--demo-body); margin-bottom: 14px; }
+.f-start { font-size: 1.8rem; font-weight: 600; line-height: 1.25; }
+.f-start span { display: block; margin-top: 8px; font-size: 1rem; font-weight: 400; }
+.f-price { border-top: 1px solid currentColor; padding-top: 20px; margin-top: 24px; font-size: 1.4rem; font-weight: 600; }
+.f-booking .demo-button { width: 100%; background: var(--demo-paper); color: var(--demo-accent-strong); border-color: var(--demo-paper); }
+.f-booking .demo-button:hover { background: var(--demo-soft); }
+.f-booking .f-fine { color: inherit; margin: 14px 0 0; }
+.f-course-body { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(300px, 1fr); gap: 64px; }
+.f-list { margin: 0; padding-left: 22px; }
+.f-list li { padding-block: 7px; }
+.f-kit-note { margin-top: 20px; color: var(--demo-muted); }
+.f-date { padding-block: 20px; border-top: 1px solid var(--demo-line); }
+.f-date p { margin-bottom: 6px; }
+.f-date > span { display: block; font-size: .88rem; color: var(--demo-muted); }
+.f-questions details, .f-email { padding-block: 16px; border-top: 1px solid var(--demo-line); }
+.f-questions summary, .f-email summary, .f-receipt summary { cursor: pointer; font-weight: 600; padding-block: 6px; }
+.f-questions details p, .f-email p { margin-top: 16px; }
+.f-questions small { color: var(--demo-muted); }
+.f-waitlist { background: var(--demo-soft); display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding: 32px; margin-block: 40px; scroll-margin-top: 24px; }
+.f-waitlist form { display: grid; gap: 12px; }
+.f-waitlist p { margin: 0; }
+.funnel input:not([type=radio]):not([type=checkbox]), .funnel select { width: 100%; min-height: 48px; border: 1px solid var(--demo-line); padding: 12px; border-radius: 4px; background: var(--demo-paper); color: var(--demo-ink); }
+.funnel label > input:not([type=radio]):not([type=checkbox]), .funnel label > select { display: block; margin-top: 8px; }
+.f-mobile-action { display: none; }
+.f-page-heading { margin-bottom: 40px; }
+.f-page-heading h1 { margin-bottom: 12px; }
+.f-page-heading p { font-size: 1.2rem; }
+.f-payment-layout { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(300px, 1fr); gap: 64px; align-items: start; }
+.f-payment-form fieldset { border: 0; padding: 0; margin: 0 0 40px; min-width: 0; }
+.f-payment-form legend { font-size: 1.25rem; font-weight: 650; padding: 0; margin-bottom: 20px; }
+.f-plans { display: grid; gap: 12px; }
+.f-plan { display: grid; grid-template-columns: auto minmax(0,1fr) auto; gap: 12px; align-items: start; padding: 18px; border: 1px solid var(--demo-line); cursor: pointer; border-radius: 4px; }
+.f-plan:has(:checked) { border-color: var(--demo-accent); background: var(--demo-soft); }
+.f-plan input, .f-kit input { width: 20px; height: 20px; accent-color: var(--demo-accent); margin: 2px 0; flex-shrink: 0; }
+.f-plan small, .f-kit small { display: block; color: var(--demo-muted); font-size: .85rem; font-weight: 400; margin-top: 4px; }
+.f-plan b { text-align: right; font-variant-numeric: tabular-nums; }
+.f-kit { display: flex; gap: 12px; margin-top: 20px; }
+.f-fields { display: grid; gap: 20px; }
+.f-summary { padding: 28px; background: var(--demo-soft); position: sticky; top: 24px; }
+.f-summary h2 { font-size: 1.35rem; }
+.f-summary [data-session-summary] { border-bottom: 1px solid var(--demo-line); padding-bottom: 20px; color: var(--demo-muted); }
+.f-total { font-size: 2.5rem; font-weight: 650; line-height: 1.2; margin: 8px 0 16px; font-variant-numeric: tabular-nums; }
+.f-schedule { padding: 0; list-style: none; font-size: .95rem; font-variant-numeric: tabular-nums; }
+.f-schedule li { padding-block: 10px; border-bottom: 1px solid var(--demo-line); }
+/* Step 4 is a fieldset like the other three, so it has to out-specify the reset above. */
+.f-payment-form fieldset.f-payment-action { border-top: 1px solid var(--demo-line); padding-top: 24px; margin-bottom: 0; }
+.f-payment-action .demo-button { width: 100%; }
+[data-payment-status] { margin-top: 12px; }
+.f-confirmation { max-width: 880px; padding-top: 48px; }
+.f-confirmation h1 { font-size: clamp(2.1rem, 4vw, 3.4rem); }
+.f-success-mark { display: grid; place-items: center; width: 56px; height: 56px; background: var(--demo-accent); color: #fff; margin-bottom: 24px; border-radius: 50%; }
+.f-receipt { background: var(--demo-soft); padding: 32px; margin-block: 32px; }
+.f-receipt dl { margin: 0 0 24px; }
+.f-receipt dl div { display: grid; grid-template-columns: 180px 1fr; gap: 24px; padding-block: 16px; border-bottom: 1px solid var(--demo-line); }
+.f-receipt dt { color: var(--demo-muted); }
+.f-receipt dd { margin: 0; font-weight: 600; }
+.f-confirm-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; margin-bottom: 16px; }
+.f-empty { padding-block: 48px; }
+@media (max-width: 900px) {
+  .f-store-intro, .f-offer, .f-course-body, .f-payment-layout { gap: 32px; }
+  .f-store-intro { grid-template-columns: 1fr; }
+  .f-course-row { grid-template-columns: 1fr 240px; gap: 32px; }
+  .f-plan { grid-template-columns: auto 1fr; }
+  .f-plan b { grid-column: 2; text-align: left; }
+}
+@media (max-width: 700px) {
+  .f-header { padding-block: 20px; }
+  .f-header-note { display: none; }
+  .f-brand { font-size: 1.8rem; }
+  .f-progress li { display: block; font-size: .78rem; padding: 12px 4px; }
+  .f-progress li span { display: block; margin-bottom: 4px; }
+  .f-store-intro { padding-block: 36px 28px; gap: 16px; }
+  .f-course-row, .f-offer, .f-course-body, .f-payment-layout, .f-waitlist { grid-template-columns: 1fr; }
+  .f-course-row { gap: 20px; padding-block: 28px; }
+  .f-row-price .demo-button { width: 100%; }
+  .f-offer { gap: 16px; }
+  .f-offer-copy { padding: 0; }
+  .f-booking, .f-summary, .f-receipt { padding: 24px; }
+  .f-facts { gap: 24px; }
+  .f-course-body { gap: 0; }
+  .f-section { margin-block: 36px; }
+  .f-waitlist { padding: 24px; gap: 24px; }
+  .funnel:has(.f-mobile-action) { padding-bottom: 88px; }
+  .f-mobile-action { position: fixed; bottom: 0; left: 0; right: 0; display: flex; gap: 12px; align-items: center; justify-content: space-between; background: var(--demo-paper); border-top: 1px solid var(--demo-line); padding: 12px 24px max(12px, env(safe-area-inset-bottom)); z-index: 5; }
+  .f-mobile-action span { font-size: .9rem; font-weight: 600; }
+  .f-mobile-action .demo-button { flex-shrink: 0; }
+  .f-payment-form { display: contents; }
+  .f-payment-form fieldset { margin: 0; }
+  .f-payment-form fieldset:nth-of-type(1) { grid-row: 1; }
+  .f-payment-form fieldset:nth-of-type(2) { grid-row: 2; }
+  .f-payment-form fieldset:nth-of-type(3) { grid-row: 4; }
+  .f-payment-action { grid-row: 5; }
+  .f-summary { position: static; grid-row: 3; }
+  /* The schedule flows at every length. Cropping it to a scroll box hid payment dates from
+     the keyboard, and the only element that could carry the tab stop sits last in the DOM
+     while grid places it at row 3, so reaching it would have jumped focus backwards. */
+  .f-receipt dl div { grid-template-columns: 1fr; gap: 6px; }
+  .f-confirmation { padding-top: 32px; }
+}

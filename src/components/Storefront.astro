@@ -1,0 +1,28 @@
+---
+import Funnel from '../layouts/Funnel.astro';
+import SessionPicker from './SessionPicker.astro';
+import type { Instituto } from '../data/tipos';
+import { availableSessions, coursePath, priceLabel } from '../lib/funnel';
+import { fecha, pesos } from '../lib/precios';
+const { i } = Astro.props as { i: Instituto };
+const intro = { idiomas: 'Inglés y portugués. Elegí qué querés aprender.', oficios: 'Tu próximo oficio empieza acá.', holistico: 'Elegí tu próxima formación.' };
+const descriptions = { idiomas: 'Cursos por nivel, clases en sede y online. Compará la propuesta y encontrá un grupo para vos.', oficios: 'Electricidad, barbería y uñas. Consultá qué vas a practicar, qué incluye cada curso y cuándo empieza.', holistico: 'Yoga, meditación y terapias. Conocé el contenido, la modalidad y los requisitos de cada formación.' };
+---
+<Funnel i={i} title="Cursos e inscripciones" step={1}>
+  <main id="contenido">
+    <section class="f-store-intro demo-wrap"><h1>{intro[i.nicho]}</h1><div><p>{descriptions[i.nicho]}</p><a class="demo-link" href="#fechas">Ya sé mi curso: ver horarios</a></div></section>
+    <section id="cursos" class="demo-wrap f-catalog" aria-label="Cursos disponibles">
+      {i.catalogo.cursos.map(c => {
+        const next = availableSessions(i, c)[0];
+        return <article class="f-course-row">
+          <div><h2><a data-track="course_click" data-course-id={c.id} href={coursePath(i, c)}>{c.nombre}</a></h2><p>{c.resumen}</p><span class="f-muted">{c.etiqueta} · {c.duracion} · {c.modalidad}</span></div>
+          <div class="f-row-price"><strong>{priceLabel(c)}</strong>{c.precio.matricula && <span>+ matrícula de {pesos(c.precio.matricula)}</span>}<span>{next ? `Próximo inicio: ${fecha(next.inicio, false)}` : 'Sin fechas disponibles'}</span><a class="demo-button" data-track="course_click" data-course-id={c.id} href={coursePath(i, c)}>Ver curso<span aria-hidden="true"> →</span></a></div>
+        </article>;
+      })}
+    </section>
+    <div class="f-section demo-wrap">
+      <SessionPicker i={i} initialGroup={i.nicho === 'idiomas' ? 'A1' : 'todos'} funnel title="Encontrá tu horario" />
+      {i.puertas && <details class="f-level-help"><summary>¿No sabés qué nivel elegir?</summary><ul>{i.puertas.items.map(item => <li><a href="#fechas" data-select-group={item.grupo}>{item.grupo} · {item.t}</a><p>{item.d}</p></li>)}</ul></details>}
+    </div>
+  </main>
+</Funnel>

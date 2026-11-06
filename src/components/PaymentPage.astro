@@ -1,0 +1,29 @@
+---
+import Funnel from '../layouts/Funnel.astro';
+import FunnelClient from './FunnelClient.astro';
+import type { Instituto, Curso } from '../data/tipos';
+import { availableSessions, coursePath } from '../lib/funnel';
+import { fecha, planes, pesos } from '../lib/precios';
+const { i, c } = Astro.props as { i: Instituto; c: Curso };
+const sessions = availableSessions(i, c);
+---
+<Funnel i={i} title={`Inscripción · ${c.nombre}`} course={c.id} step={3}>
+  <main id="contenido" class="demo-wrap">
+    <a class="f-back" data-back-course href={coursePath(i,c)}>← Volver al curso</a>
+    <div class="f-page-heading"><h1>Tu inscripción</h1><p>{c.nombre} · {i.nombreCorto}</p></div>
+    {sessions.length ? <div class="f-payment-layout">
+      <form id="f-payment" class="f-payment-form">
+        <fieldset><legend>1. Elegí tu comisión</legend><label>Fecha y horario<select name="commission" required>{sessions.map(s => <option value={s.id}>{s.titulo} · {fecha(s.inicio,false)} {s.inicio.slice(0,4)} · {s.dias}, {s.horario} · {s.sede}</option>)}</select></label><p class="f-fine" role="status" data-availability></p></fieldset>
+        <fieldset><legend>2. Elegí cómo pagar</legend><div class="f-plans">{planes(c).map((p,index) => <label class="f-plan"><input type="radio" name="plan" value={p.id} checked={index === 0} required /><span><strong>{p.titulo}</strong><small>{p.id === 'suscripcion' ? 'Mensual, hasta cancelar. Sin total cerrado.' : `Total del curso: ${pesos(p.total)}`}</small></span><b>{pesos(p.hoy)}<small>hoy</small></b></label>)}</div>
+          {c.precio.kit && <label class="f-kit"><input type="checkbox" name="kit" /><span>Agregar kit · {pesos(c.precio.kit.monto)}<small>{c.precio.kit.detalle}</small></span></label>}
+        </fieldset>
+        <fieldset><legend>3. Tus datos</legend><p class="f-fine">Usá estos datos ficticios. No se guardan ni se envían.</p><div class="f-fields"><label>Nombre y apellido<input name="name" required value="Valentina Ríos" autocomplete="off" /></label><label>Email<input name="email" type="email" required value="valentina@ejemplo.com" autocomplete="off" /></label><label>WhatsApp<input name="phone" type="tel" required pattern="[+0-9 ()-]{8,20}" value="11 0000-0000" autocomplete="off" /></label></div></fieldset>
+        <fieldset class="f-payment-action"><legend>4. Pago con Mercado Pago</legend><p>Simulación sin conexión con Mercado Pago. No necesitás tarjeta ni cuenta.</p><button class="demo-button" type="submit" data-pay>Simular pago</button><p role="status" data-payment-status></p></fieldset>
+      </form>
+      <aside class="f-summary" aria-labelledby="summary-title"><h2 id="summary-title">Resumen de tu inscripción</h2><h3>{c.nombre}</h3><p data-session-summary></p><div aria-live="polite" aria-atomic="true"><span>Hoy pagarías</span><p class="f-total" data-today></p><p data-total></p><p data-balance></p></div><h3 data-schedule-title>Después</h3><ol class="f-schedule" data-schedule></ol><p class="f-fine">Calendario ilustrativo. No se programa ningún cobro.</p></aside>
+    </div> : <section class="f-empty"><h2>No hay comisiones disponibles</h2><p>Podés dejar una solicitud de ejemplo para la próxima fecha.</p><a class="demo-button" href={`${coursePath(i,c)}#proxima-fecha`}>Avisame de la próxima fecha</a></section>}
+    <a hidden data-confirmation-link href={`${coursePath(i,c)}confirmacion/`}>Confirmación</a>
+    <noscript><p>Activá JavaScript para calcular el plan y probar el pago simulado.</p></noscript>
+  </main>
+  <FunnelClient i={i} c={c} />
+</Funnel>

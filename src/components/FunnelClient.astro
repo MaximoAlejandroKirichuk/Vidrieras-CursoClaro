@@ -1,0 +1,12 @@
+---
+import type { Instituto, Curso } from '../data/tipos';
+import { availableSessions, paymentSchedule } from '../lib/funnel';
+import { planes } from '../lib/precios';
+import client from '../scripts/funnel.js?raw';
+const { i, c } = Astro.props as { i: Instituto; c: Curso };
+const sessions = availableSessions(i,c);
+const schedules = Object.fromEntries(sessions.flatMap(s => planes(c).flatMap(p => [false, true].map(kit => [`${s.id}:${p.id}:${kit ? 1 : 0}`, paymentSchedule(c,p.id,s,kit)]))));
+const data = JSON.stringify({ course: c.id, institute: i.nombreCorto, sessions, schedules }).replace(/</g, '\\u003c');
+---
+<script is:inline type="application/json" id="funnel-data" set:html={data}></script>
+<script is:inline set:html={client}></script>

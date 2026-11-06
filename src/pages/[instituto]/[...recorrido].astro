@@ -1,0 +1,13 @@
+---
+import { institutes } from '../../lib/funnel';
+import CoursePage from '../../components/CoursePage.astro';
+import PaymentPage from '../../components/PaymentPage.astro';
+import ConfirmationPage from '../../components/ConfirmationPage.astro';
+export function getStaticPaths() {
+  return institutes.flatMap(i => i.catalogo.cursos.flatMap(c => ['', '/pago', '/confirmacion'].map(suffix => ({
+    params: { instituto: i.nicho, recorrido: c.id + suffix }, props: { i, c, suffix },
+  }))));
+}
+const { i, c, suffix } = Astro.props;
+---
+{suffix === '/pago' ? <PaymentPage i={i} c={c} /> : suffix === '/confirmacion' ? <ConfirmationPage i={i} c={c} /> : <CoursePage i={i} c={c} />}

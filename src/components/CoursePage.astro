@@ -1,0 +1,50 @@
+---
+import Funnel from '../layouts/Funnel.astro';
+import FunnelClient from './FunnelClient.astro';
+import type { Instituto, Curso } from '../data/tipos';
+import { availableSessions, coursePath, priceLabel } from '../lib/funnel';
+import { fecha, pesos } from '../lib/precios';
+const { i, c } = Astro.props as { i: Instituto; c: Curso };
+const next = availableSessions(i, c)[0];
+const path = coursePath(i, c);
+---
+<Funnel i={i} title={c.nombre} course={c.id} step={2}>
+  <main id="contenido" class="demo-wrap">
+    <a class="f-back" href={`/${i.nicho}/`}>← Todos los cursos de {i.nombreCorto}</a>
+    <section class="f-offer" aria-labelledby="course-title">
+      <div class="f-offer-copy"><h1 id="course-title">{c.nombre}</h1><p class="f-lead">{c.resumen}</p><p class="f-audience">{c.publico || c.etiqueta}</p>
+        <dl class="f-facts"><div><dt>Duración</dt><dd>{c.duracion}</dd></div><div><dt>Modalidad</dt><dd>{c.modalidad}</dd></div></dl>
+      </div>
+      <aside class="f-booking" aria-label="Precio e inscripción">
+        <h2 data-booking-title>{next ? 'Tu próximo inicio' : c.cerrado ? 'Este curso ya cerró' : 'Sin cupos disponibles'}</h2>
+        {next && <p class="f-start"><time data-booking-date datetime={next.inicio}>{fecha(next.inicio, false)}</time><span data-booking-location>{next.inicio.slice(0,4)} · {next.sede}</span></p>}
+        <p class="f-price">{priceLabel(c)}</p>
+        {c.precio.matricula && <p>+ matrícula de {pesos(c.precio.matricula)}</p>}
+        {next ? <><a class="demo-button" data-enroll data-track="enroll_click" href={`${path}pago/`}>Inscribirme</a><p class="f-fine">Elegí comisión y plan en el siguiente paso. Sin crear cuenta.</p></> : <a class="demo-button" href="#proxima-fecha">Avisame de la próxima fecha</a>}
+      </aside>
+    </section>
+    <div class="f-course-body">
+      <div>
+        <section class="f-section"><h2>Cómo es la cursada</h2><ul class="f-list">{c.datos.map(item => <li>{item}</li>)}</ul></section>
+        <section class="f-section"><h2>Qué vas a aprender</h2>{c.temario ? <ul class="f-list">{c.temario.map(item => <li>{item}</li>)}</ul> : <p>{c.resumen}</p>}</section>
+        <section class="f-section"><h2>Qué incluye</h2><ul class="f-list">{c.incluye.map(item => <li>{item}</li>)}</ul>{c.precio.kit && <p class="f-kit-note">Kit opcional: {pesos(c.precio.kit.monto)}. {c.precio.kit.detalle} Podés agregarlo al elegir el plan.</p>}</section>
+        {c.docente && <section class="f-section"><h2>Quién enseña</h2><h3>{c.docente.nombre}</h3><p>{c.docente.bio}</p></section>}
+        {i.nicho === 'holistico' && i.parasi && <section class="f-section"><h2>Alcance de la formación</h2><p>{i.parasi.alcance}</p><p>No es un título oficial ni habilita a tratar dolencias.</p></section>}
+        <section class="f-section f-questions"><h2>Antes de inscribirte</h2>
+          <details><summary>¿Cómo funcionan los pagos?</summary><p>Podés comparar los planes disponibles antes de completar tus datos. Vas a ver el importe de hoy, el saldo y el calendario de pagos de ejemplo. En esta demo no hay cobros ni débitos automáticos.</p></details>
+          <details><summary>¿Cómo se cursa?</summary><p>{c.modalidad}. Duración: {c.duracion}. {c.datos.join('. ')}.</p></details>
+          {i.faq.filter(q => /falto|experiencia|nivel|material|herramienta/i.test(q.p)).slice(0, 3).map(q => <details><summary>{q.p}</summary><p>{q.r}</p><small>Condición del instituto ficticio.</small></details>)}
+        </section>
+      </div>
+      <aside class="f-section f-dates"><h2>Fechas y comisiones</h2><p class="f-fine">Disponibilidad de ejemplo, por grupo.</p>
+        {i.fechas.comisiones.filter(s => s.cursoId === c.id).map(s => {
+          const open = availableSessions(i,c).some(a => a.id === s.id);
+          return <div class="f-date"><h3>{s.titulo}</h3><p>{s.dias} · {s.horario}<br />{s.sede} · {fecha(s.inicio, false)} {s.inicio.slice(0,4)}</p><span>{open ? `${s.cupos} lugares de ejemplo` : 'Inscripción no disponible'}</span><a class="demo-link" data-track={open ? 'enroll_click' : undefined} href={open ? `${path}pago/?comision=${s.id}` : '#proxima-fecha'}>{open ? 'Inscribirme en este grupo' : 'Avisame de otra fecha'}</a></div>;
+        })}
+      </aside>
+    </div>
+    <section id="proxima-fecha" class="f-waitlist"><div><h2>{next ? '¿No te sirven estas fechas?' : 'Te interesa la próxima fecha'}</h2><p>Probá cómo sería dejar tu WhatsApp para una nueva comisión.</p></div><form data-waitlist><label>WhatsApp de ejemplo<input type="tel" required pattern="[+0-9 ()-]{8,20}" value="11 0000-0000" autocomplete="off" /></label><button class="demo-button">Simular aviso</button><p class="f-fine" role="status" data-waitlist-status>No se guarda el número ni se envían mensajes.</p></form></section>
+    {next && <div class="f-mobile-action"><span>{priceLabel(c)}</span><a class="demo-button" data-enroll data-track="enroll_click" href={`${path}pago/`}>Inscribirme</a></div>}
+  </main>
+  <FunnelClient i={i} c={c} />
+</Funnel>
